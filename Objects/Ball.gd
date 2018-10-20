@@ -26,12 +26,12 @@ func move(delta):
 	var step = (speed*delta*speedFactor)
 	if abs(step[0]) > 35:
 		step = Vector2(35 * (step[0] / abs(step[0])), step[1])
-	print(position)
+#	print(position)
 	set_position(get_position() + step)
 	if get_position()[1] < 0:
-		set_position(Vector2(get_position()[0], get_position()[1] * 0))
+		set_position(Vector2(get_position()[0], 5))
 	if get_position()[1] > ProjectSettings.get_setting("globals/height"):
-		set_position(Vector2(get_position()[0], ProjectSettings.get_setting("globals/height")))
+		set_position(Vector2(get_position()[0], ProjectSettings.get_setting("globals/height") - 5))
 	
 
 func _on_Area2D_area_entered(area):

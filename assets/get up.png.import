@@ -7,10 +7,7 @@ path="res://.import/get up.png-2bb020147bbaa7202c47f0b37cc96e89.stex"
 [deps]
 
 source_file="res://assets/get up.png"
-source_md5="f81d3e7a07537da39b495132ddc63a16"
-
 dest_files=[ "res://.import/get up.png-2bb020147bbaa7202c47f0b37cc96e89.stex" ]
-dest_md5="4c78a04dfc9536cdb289656eaa408f7e"
 
 [params]
 

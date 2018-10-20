@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Objects/PowerUP.gd" type="Script" id=1]
 [ext_resource path="res://assets/powerup-background.png" type="Texture" id=2]
-[ext_resource path="res://assets/speed up.png" type="Texture" id=3]
+[ext_resource path="res://assets/speed up2.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -20,6 +20,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Symbol" type="Sprite" parent="." index="1"]
 
+scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 

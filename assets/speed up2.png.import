@@ -2,15 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/speed up.png-afb15cbc647edf3b28e92b4ef7de4b96.stex"
+path="res://.import/speed up2.png-6451d1b2f3f0988d8e6824ba91a8a361.stex"
 
 [deps]
 
-source_file="res://assets/speed up.png"
-source_md5="807df5203d93ffa652b7f4c8e4fac87c"
-
-dest_files=[ "res://.import/speed up.png-afb15cbc647edf3b28e92b4ef7de4b96.stex" ]
-dest_md5="0ee0bf9c4c282bcb5c4f72c7549450c8"
+source_file="res://assets/speed up2.png"
+dest_files=[ "res://.import/speed up2.png-6451d1b2f3f0988d8e6824ba91a8a361.stex" ]
 
 [params]
 

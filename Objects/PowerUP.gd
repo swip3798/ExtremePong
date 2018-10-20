@@ -19,19 +19,19 @@ func _ready():
 	if state >=0 and state <=3:
 		background.set_modulate(Color("00ffed"))
 		if state == 0:
-			symbol.set_rotation_degrees(-90)
+			symbol.set_rotation_degrees(0)
 		elif state == 1:
-			symbol.set_rotation_degrees(90)
+			symbol.set_rotation_degrees(180)
 		elif state == 2:
 			symbol.set_texture(load("res://assets/get up.png"))
 		elif state == 3:
 			symbol.set_texture(load("res://assets/get down.png"))
 	else:
-		background.set_modulate(Color("ff0000"))
+		background.set_modulate(Color("67ff00"))
 		if state == 4:
-			symbol.set_rotation_degrees(-90)
+			symbol.set_rotation_degrees(0)
 		elif state == 5:
-			symbol.set_rotation_degrees(90)
+			symbol.set_rotation_degrees(180)
 		elif state == 6:
 			symbol.set_texture(load("res://assets/get up.png"))
 		elif state == 7:

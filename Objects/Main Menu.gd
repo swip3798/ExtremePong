@@ -3,6 +3,10 @@ extends Control
 func _ready():
 	ProjectSettings.set_setting("globals/width", 1280)
 	ProjectSettings.set_setting("globals/height", 720)
+	if ProjectSettings.has_setting("globals/vsync"):
+		OS.set_use_vsync(ProjectSettings.get_setting("globals/vsync"))
+	if ProjectSettings.has_setting("globals/fullscreen"):
+		OS.set_window_fullscreen(ProjectSettings.get_setting("globals/fullscreen"))
 	get_node("PlayButton").set_text("Play")
 	get_node("Settings").set_text("Settings")
 	get_node("Exit").set_text("Exit")

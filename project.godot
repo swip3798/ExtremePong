@@ -31,13 +31,16 @@ window/stretch/aspect="keep"
 
 [globals]
 
-powerfactor=10.2
+powerfactor=7.4
 ai_difficulty=2
 ai_enabled=true
 ptw=50.0
 width=1280
 height=720
 winner="Player 1"
+glow=true
+fullscreen=false
+vsync=true
 
 [input]
 
@@ -73,7 +76,12 @@ ui_pause=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
  ]
 
+[physics]
+
+common/physics_fps=120
+
 [rendering]
 
+quality/subsurface_scattering/scale=1
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

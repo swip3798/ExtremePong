@@ -1,0 +1,156 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Objects/Main Menu.gd" type="Script" id=1]
+[ext_resource path="res://res/Main Menu.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Objects/WorldEnvironment.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/RetroButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Buttonhover.png" type="Texture" id=5]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Label
+
+var time
+var flicker
+var state
+var spawnPoint
+
+func _ready():
+	randomize()
+	time = 0
+	state = 0
+	flicker = rand_range(1,6)
+	spawnPoint = get_node(\"Position2D\")
+
+func _process(delta):
+	if time < flicker and state == 0:
+		time += delta
+	else:
+		time += delta
+		if time - flicker < 0.03:
+			return
+		if state >= 6:
+			randomize()
+			time = 0
+			state = 0
+			flicker = rand_range(1,6)
+			add_color_override(\"font_color\", Color(\"00ffcf\"))
+			var explosion = preload(\"res://Objects/Explosion Gravity.tscn\").instance()
+			explosion.set_position(spawnPoint.get_position())
+			explosion.set_z_index(-1)
+			add_child(explosion)
+		else:
+			if state % 2 == 0:
+				time = flicker
+				add_color_override(\"font_color\", Color(\"00ffcf\"))
+			else:
+				time = flicker
+				add_color_override(\"font_color\", Color(\"00ebbe\"))
+			state += 1"
+
+[node name="Main Menu" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_left = NodePath("PlayButton")
+focus_neighbour_top = NodePath("PlayButton")
+focus_neighbour_right = NodePath("PlayButton")
+focus_neighbour_bottom = NodePath("PlayButton")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Focus" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 20.0
+margin_bottom = 139.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 1, 0.811765, 1 )
+text = "Extreme Pong"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 1 )
+_sections_unfolded = [ "Anchor", "Rect", "custom_colors" ]
+
+[node name="Position2D" type="Position2D" parent="Title" index="0"]
+
+position = Vector2( 1031.43, 116.589 )
+
+[node name="WorldEnvironment" parent="." index="1" instance=ExtResource( 3 )]
+
+[node name="PlayButton" parent="." index="2" instance=ExtResource( 4 )]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -141.0
+margin_top = -120.0
+margin_right = 141.0
+margin_bottom = -20.0
+focus_neighbour_top = NodePath("../Exit")
+focus_neighbour_bottom = NodePath("../Settings")
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../Exit")
+texture_focused = ExtResource( 5 )
+_sections_unfolded = [ "Focus", "Textures", "Visibility" ]
+
+[node name="Settings" parent="." index="3" instance=ExtResource( 4 )]
+
+modulate = Color( 1, 0.960938, 0, 1 )
+margin_left = 499.0
+margin_top = 355.0
+margin_right = 781.0
+margin_bottom = 455.0
+focus_neighbour_top = NodePath("../PlayButton")
+focus_neighbour_bottom = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../PlayButton")
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
+
+[node name="Exit" parent="." index="4" instance=ExtResource( 4 )]
+
+modulate = Color( 0, 0.4375, 1, 1 )
+margin_left = 499.0
+margin_top = 470.0
+margin_right = 781.0
+margin_bottom = 570.0
+focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_bottom = NodePath("../PlayButton")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../Settings")
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
+
+[connection signal="gui_input" from="Title" to="." method="_on_Title_gui_input"]
+
+[connection signal="button_up" from="PlayButton" to="." method="_on_PlayButton_button_up"]
+
+[connection signal="button_up" from="Settings" to="." method="_on_Settings_button_up"]
+
+[connection signal="button_up" from="Exit" to="." method="_on_Exit_button_up"]
+
+

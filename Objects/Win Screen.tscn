@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/Win Screen.gd" type="Script" id=1]
+[ext_resource path="res://res/Main Menu.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Objects/RetroButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/WorldEnvironment.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/ElementSpawner.tscn" type="PackedScene" id=5]
+
+[node name="Win Screen" type="Control"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_next = NodePath("Back")
+focus_previous = NodePath("Back")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Focus" ]
+
+[node name="WinText" type="Label" parent="." index="0"]
+
+modulate = Color( 1, 0.484375, 0.484375, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 200.0
+margin_bottom = 319.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "WIN!"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+
+[node name="Back" parent="." index="1" instance=ExtResource( 3 )]
+
+modulate = Color( 1, 0, 0.960938, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -219.0
+margin_top = 8.0
+margin_right = 218.0
+margin_bottom = 162.0
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
+
+[node name="WorldEnvironment" parent="." index="2" instance=ExtResource( 4 )]
+
+[node name="ElementSpawner" parent="." index="3" instance=ExtResource( 5 )]
+
+[node name="ElementSpawner2" parent="." index="4" instance=ExtResource( 5 )]
+
+[node name="ElementSpawner3" parent="." index="5" instance=ExtResource( 5 )]
+
+[connection signal="button_up" from="Back" to="." method="_on_Back_button_up"]
+
+

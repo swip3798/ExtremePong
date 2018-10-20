@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/speed up.png-afb15cbc647edf3b28e92b4ef7de4b96.stex"
+
+[deps]
+
+source_file="res://assets/speed up.png"
+source_md5="807df5203d93ffa652b7f4c8e4fac87c"
+
+dest_files=[ "res://.import/speed up.png-afb15cbc647edf3b28e92b4ef7de4b96.stex" ]
+dest_md5="0ee0bf9c4c282bcb5c4f72c7549450c8"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

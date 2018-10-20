@@ -1,0 +1,150 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Objects/SettingsMenu.gd" type="Script" id=1]
+[ext_resource path="res://res/Main Menu.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Objects/Retro Slider.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main menu.tres" type="Environment" id=4]
+[ext_resource path="res://res/Subtitle.tres" type="DynamicFont" id=5]
+[ext_resource path="res://res/Slider Font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Objects/Difficulty.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/RetroButton.tscn" type="PackedScene" id=8]
+
+[node name="SettingsMenu" type="Control"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -4.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="." index="0"]
+
+modulate = Color( 1, 0.960784, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_bottom = 119.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "Settings"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Power Factor Slider" parent="." index="1" instance=ExtResource( 3 )]
+
+modulate = Color( 0.40625, 1, 0, 1 )
+margin_left = 22.0
+margin_top = 157.0
+margin_right = 530.0
+margin_bottom = 234.0
+min_value = 1.0
+max_value = 12.0
+step = 0.2
+value = 5.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
+
+environment = ExtResource( 4 )
+
+[node name="Graphics Title" type="Label" parent="." index="3"]
+
+modulate = Color( 0, 0.4375, 1, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 570.0
+margin_top = 153.0
+margin_right = 1273.0
+margin_bottom = 233.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 5 )
+text = "Graphics"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="hahafunny" type="RichTextLabel" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 559.0
+margin_top = 230.0
+margin_right = 1276.0
+margin_bottom = 292.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]Just kidding, there are no graphic options. [/center]
+[center]If the game is lagging, you probably should not play on a toaster... [/center]"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Just kidding, there are no graphic options. 
+If the game is lagging, you probably should not play on a toaster... "
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "custom_fonts" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Difficulty" parent="." index="5" instance=ExtResource( 7 )]
+
+[node name="btnBack" parent="." index="6" instance=ExtResource( 8 )]
+
+modulate = Color( 0.617188, 0, 1, 1 )
+margin_left = 1001.15
+margin_top = 600.103
+margin_right = 1233.15
+margin_bottom = 680.103
+_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+
+[connection signal="value_changed" from="Power Factor Slider" to="." method="_on_Power_Factor_Slider_value_changed"]
+
+[connection signal="button_up" from="btnBack" to="." method="_on_btnBack_button_up"]
+
+

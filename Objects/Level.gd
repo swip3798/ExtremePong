@@ -33,17 +33,15 @@ func reset():
 	ball.reset()
 
 func _on_exit_left(area):
-	if ball.speed[0] < 0:
-		ball.set_position(Vector2(0, ball.get_position()[1]))
-		player2.points += 1
-		reset()
+	ball.set_position(Vector2(0, ball.get_position()[1]))
+	player2.points += 1
+	reset()
 
 
 func _on_exit_right(area):
-	if ball.speed[0] > 0:
-		ball.set_position(Vector2(1280, ball.get_position()[1]))
-		player1.points += 1
-		reset()
+	ball.set_position(Vector2(1280, ball.get_position()[1]))
+	player1.points += 1
+	reset()
 
 func update_labels():
 	get_node("PointsPlayer1").text = str(player1.points)

@@ -71,10 +71,13 @@ func _process(delta):
 			elif rel_enterpoint < target_point:
 				Player.move_up(delta)
 	elif difficulty == 2:
-		if Ball.speed != Vector2(0,0) and Ball.speed[0] != 0 and not calculated:
+		if Ball.speed != Vector2(0,0) and Ball.speed[0] != 0 and not calculated and Ball.get_position()[0] < Player.get_position()[0]:
 			go_to_point = get_ball_y(Ball.get_position(), Ball.speed, Ball.size)
 			dtarget.set_position(go_to_point)
 			calculated = true
+		elif Ball.speed == Vector2(0,0):
+			go_to_point = Vector2(Player.get_position()[0], ProjectSettings.get_setting("globals/height") / 2)
+			dtarget.set_position(go_to_point)
 		if Player.speed > 0:
 			if Player.get_position()[1] < go_to_point[1]:
 				Player.move_down(delta)

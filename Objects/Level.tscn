@@ -18,7 +18,7 @@ script = ExtResource( 1 )
 
 [node name="Ball" parent="." index="0" instance=ExtResource( 2 )]
 
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 0.476563, 1, 0, 1 )
 position = Vector2( 964.637, 131.106 )
 z_index = -1
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -51,23 +51,23 @@ script = ExtResource( 6 )
 
 [node name="Border" parent="." index="6" instance=ExtResource( 7 )]
 
-position = Vector2( 643.346, -52.1197 )
-scale = Vector2( 19.9483, 1.43376 )
+position = Vector2( 645.666, -52.1197 )
+scale = Vector2( 21.3854, 1.43376 )
 
 [node name="Border2" parent="." index="7" instance=ExtResource( 7 )]
 
-position = Vector2( 637.965, 797.597 )
-scale = Vector2( 19.899, 2.33635 )
+position = Vector2( 644.913, 797.597 )
+scale = Vector2( 21.3618, 2.33635 )
 
 [node name="Border3" parent="." index="8" instance=ExtResource( 7 )]
 
-position = Vector2( -105.104, 358.427 )
-scale = Vector2( 3.21132, 10.4754 )
+position = Vector2( -156.798, 371.548 )
+scale = Vector2( 3.21132, 13.9429 )
 
 [node name="Border4" parent="." index="9" instance=ExtResource( 7 )]
 
-position = Vector2( 1350.49, 357.898 )
-scale = Vector2( 2.17415, 10.5709 )
+position = Vector2( 1457.26, 381.345 )
+scale = Vector2( 3.51267, 13.8722 )
 
 [node name="PointsPlayer1" type="Label" parent="." index="10"]
 
@@ -162,9 +162,9 @@ _sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 
 [connection signal="collision_detected" from="Player" to="AIController" method="_on_Player_collision_detected"]
 
-[connection signal="area_exited" from="Border3" to="." method="_on_exit_left"]
+[connection signal="area_entered" from="Border3" to="." method="_on_exit_left"]
 
-[connection signal="area_exited" from="Border4" to="." method="_on_exit_right"]
+[connection signal="area_entered" from="Border4" to="." method="_on_exit_right"]
 
 [connection signal="timeout" from="Spawner" to="Spawner" method="_on_Spawner_timeout"]
 

@@ -48,7 +48,7 @@ func _process(delta):
 				add_color_override(\"font_color\", Color(\"00ebbe\"))
 			state += 1"
 
-[node name="Main Menu" type="Control"]
+[node name="Main Menu" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -136,14 +136,23 @@ _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 modulate = Color( 1, 0.1875, 0, 1 )
 margin_left = 499.0
-margin_top = 470.0
+margin_top = 585.0
 margin_right = 781.0
-margin_bottom = 570.0
+margin_bottom = 685.0
 focus_neighbour_top = NodePath("../Settings")
 focus_neighbour_bottom = NodePath("../PlayButton")
 focus_next = NodePath("../PlayButton")
 focus_previous = NodePath("../Settings")
 _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
+
+[node name="Credits" parent="." index="5" instance=ExtResource( 4 )]
+
+modulate = Color( 0.0078125, 1, 0, 1 )
+margin_left = 499.0
+margin_top = 470.0
+margin_right = 781.0
+margin_bottom = 570.0
+_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 
 [connection signal="gui_input" from="Title" to="." method="_on_Title_gui_input"]
 
@@ -152,5 +161,7 @@ _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 [connection signal="button_up" from="Settings" to="." method="_on_Settings_button_up"]
 
 [connection signal="button_up" from="Exit" to="." method="_on_Exit_button_up"]
+
+[connection signal="button_up" from="Credits" to="." method="_on_Credits_button_up"]
 
 

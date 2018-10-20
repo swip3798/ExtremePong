@@ -36,3 +36,7 @@ func _on_Settings_button_up():
 
 func _on_PlayButton_button_up():
 	get_tree().change_scene("res://Objects/Selection Screen.tscn")
+
+
+func _on_Credits_button_up():
+	get_tree().change_scene("res://Objects/Credits.tscn")

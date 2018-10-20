@@ -8,7 +8,7 @@
 [ext_resource path="res://Objects/RetroToggleButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/WorldEnvironment.tscn" type="PackedScene" id=7]
 
-[node name="SettingsMenu" type="Control"]
+[node name="SettingsMenu" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -55,26 +55,31 @@ __meta__ = {
 [node name="Power Factor Slider" parent="." index="1" instance=ExtResource( 3 )]
 
 modulate = Color( 0.40625, 1, 0, 1 )
-margin_left = 22.0
-margin_top = 157.0
-margin_right = 530.0
-margin_bottom = 234.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -254.0
+margin_top = -210.0
+margin_right = 254.0
+margin_bottom = -133.0
 min_value = 1.0
 max_value = 12.0
 step = 0.2
 value = 5.0
+_sections_unfolded = [ "Rect", "Visibility", "custom_icons", "custom_styles" ]
 
 [node name="Graphics Title" type="Label" parent="." index="2"]
 
 modulate = Color( 0, 0.4375, 1, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 46.0
-margin_top = 254.0
-margin_right = 749.0
-margin_bottom = 334.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -352.0
+margin_top = -40.0
+margin_right = 351.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -101,26 +106,33 @@ _sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 [node name="Fullscreen" parent="." index="4" instance=ExtResource( 6 )]
 
 modulate = Color( 1, 0.726563, 0, 1 )
-margin_left = 20.0
-margin_top = 390.0
-margin_right = 352.0
-margin_bottom = 509.0
+margin_left = 74.0
+margin_top = 420.0
+margin_right = 406.0
+margin_bottom = 539.0
+_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 
 [node name="Vsync" parent="." index="5" instance=ExtResource( 6 )]
 
 modulate = Color( 0, 0.460938, 1, 1 )
-margin_left = 370.0
-margin_top = 546.0
-margin_right = 646.0
-margin_bottom = 646.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -166.0
+margin_top = 60.0
+margin_right = 166.0
+margin_bottom = 179.0
+_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 
 [node name="Glow" parent="." index="6" instance=ExtResource( 6 )]
 
 modulate = Color( 0, 1, 0.695313, 1 )
-margin_left = 390.0
-margin_top = 352.0
-margin_right = 666.0
-margin_bottom = 447.0
+margin_left = 874.0
+margin_top = 420.0
+margin_right = 1206.0
+margin_bottom = 539.0
+_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 
 [node name="WorldEnvironment" parent="." index="7" instance=ExtResource( 7 )]
 

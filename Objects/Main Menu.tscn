@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/Main Menu.gd" type="Script" id=1]
-[ext_resource path="res://res/Main Menu.tres" type="DynamicFont" id=2]
+[ext_resource path="res://res/Splash Font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Objects/WorldEnvironment.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/RetroButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Buttonhover.png" type="Texture" id=5]
@@ -48,7 +48,7 @@ func _process(delta):
 				add_color_override(\"font_color\", Color(\"00ebbe\"))
 			state += 1"
 
-[node name="Main Menu" type="Control"]
+[node name="Main Menu" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -110,9 +110,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -141.0
-margin_top = -168.0
+margin_top = -141.0
 margin_right = 141.0
-margin_bottom = -68.0
+margin_bottom = -41.0
 focus_neighbour_top = NodePath("../Exit")
 focus_neighbour_bottom = NodePath("../Settings")
 focus_next = NodePath("../Settings")
@@ -124,9 +124,9 @@ _sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 
 modulate = Color( 1, 0.960938, 0, 1 )
 margin_left = 499.0
-margin_top = 307.0
+margin_top = 334.0
 margin_right = 781.0
-margin_bottom = 407.0
+margin_bottom = 434.0
 focus_neighbour_top = NodePath("../PlayButton")
 focus_neighbour_bottom = NodePath("../Exit")
 focus_next = NodePath("../Exit")
@@ -137,9 +137,9 @@ _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 modulate = Color( 1, 0.1875, 0, 1 )
 margin_left = 499.0
-margin_top = 537.0
+margin_top = 564.0
 margin_right = 781.0
-margin_bottom = 637.0
+margin_bottom = 664.0
 focus_neighbour_top = NodePath("../Settings")
 focus_neighbour_bottom = NodePath("../PlayButton")
 focus_next = NodePath("../PlayButton")
@@ -150,9 +150,9 @@ _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 modulate = Color( 0.162842, 1, 0.15625, 1 )
 margin_left = 499.0
-margin_top = 422.0
+margin_top = 449.0
 margin_right = 781.0
-margin_bottom = 522.0
+margin_bottom = 549.0
 _sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 
 [connection signal="gui_input" from="Title" to="." method="_on_Title_gui_input"]

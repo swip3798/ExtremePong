@@ -16,6 +16,7 @@ RenderBloom=true
 
 config/name="ExtremePong"
 run/main_scene="res://Objects/Main Menu.tscn"
+boot_splash/image="res://splash_screen.png"
 config/icon="res://icon.png"
 
 [debug]

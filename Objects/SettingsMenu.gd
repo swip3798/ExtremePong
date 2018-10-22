@@ -14,6 +14,7 @@ func _ready():
 		get_node("Glow").pressed = true
 	get_node("Vsync").pressed = OS.is_vsync_enabled()
 	get_node("Fullscreen").pressed = OS.is_window_fullscreen()
+	get_node("Power Factor Slider").grab_focus()
 
 
 

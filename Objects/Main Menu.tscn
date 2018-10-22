@@ -48,7 +48,7 @@ func _process(delta):
 				add_color_override(\"font_color\", Color(\"00ebbe\"))
 			state += 1"
 
-[node name="Main Menu" type="Control" index="0"]
+[node name="Main Menu" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -128,8 +128,8 @@ margin_top = 334.0
 margin_right = 781.0
 margin_bottom = 434.0
 focus_neighbour_top = NodePath("../PlayButton")
-focus_neighbour_bottom = NodePath("../Exit")
-focus_next = NodePath("../Exit")
+focus_neighbour_bottom = NodePath("../Credits")
+focus_next = NodePath("../Credits")
 focus_previous = NodePath("../PlayButton")
 _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
@@ -140,10 +140,10 @@ margin_left = 499.0
 margin_top = 564.0
 margin_right = 781.0
 margin_bottom = 664.0
-focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_top = NodePath("../Credits")
 focus_neighbour_bottom = NodePath("../PlayButton")
 focus_next = NodePath("../PlayButton")
-focus_previous = NodePath("../Settings")
+focus_previous = NodePath("../Credits")
 _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 [node name="Credits" parent="." index="5" instance=ExtResource( 4 )]
@@ -153,7 +153,11 @@ margin_left = 499.0
 margin_top = 449.0
 margin_right = 781.0
 margin_bottom = 549.0
-_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_bottom = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../Settings")
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 [connection signal="gui_input" from="Title" to="." method="_on_Title_gui_input"]
 

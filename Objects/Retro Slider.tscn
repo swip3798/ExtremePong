@@ -6,7 +6,7 @@
 [ext_resource path="res://Objects/Retro Slider.gd" type="Script" id=4]
 [ext_resource path="res://res/Slider Font.tres" type="DynamicFont" id=5]
 
-[node name="Power Factor Slider" type="HSlider" index="0"]
+[node name="Power Factor Slider" type="HSlider"]
 
 anchor_left = 0.0
 anchor_top = 0.0

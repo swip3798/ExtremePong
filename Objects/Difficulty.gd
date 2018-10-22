@@ -27,3 +27,7 @@ func _on_light_button_up():
 func _on_Medium_button_up():
 	ProjectSettings.set_setting("globals/ai_difficulty", 1)
 	ProjectSettings.save()
+
+
+func _on_Difficulty_focus_entered():
+	get_node("Heavy").grab_focus()

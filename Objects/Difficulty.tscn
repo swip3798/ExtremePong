@@ -5,7 +5,7 @@
 [ext_resource path="res://Objects/RetroToggleButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://res/diff_btn_group.tres" type="ButtonGroup" id=4]
 
-[node name="Difficulty" type="Control" index="0"]
+[node name="Difficulty" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -17,11 +17,13 @@ margin_right = 49.0
 margin_bottom = 332.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
+_sections_unfolded = [ "Focus" ]
 
 [node name="Difficulty Title" type="Label" parent="." index="0"]
 
@@ -48,9 +50,6 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Heavy" parent="." index="1" instance=ExtResource( 3 )]
 
@@ -59,8 +58,10 @@ margin_left = 236.0
 margin_top = 80.0
 margin_right = 468.0
 margin_bottom = 160.0
+focus_next = NodePath("../Medium")
+focus_previous = NodePath("../light")
 group = ExtResource( 4 )
-_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 [node name="Medium" parent="." index="2" instance=ExtResource( 3 )]
 
@@ -73,8 +74,10 @@ margin_left = 216.0
 margin_top = 160.0
 margin_right = 448.0
 margin_bottom = 240.0
+focus_next = NodePath("../light")
+focus_previous = NodePath("../Heavy")
 group = ExtResource( 4 )
-_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 [node name="light" parent="." index="3" instance=ExtResource( 3 )]
 
@@ -83,8 +86,12 @@ margin_left = 236.0
 margin_top = 280.0
 margin_right = 468.0
 margin_bottom = 360.0
+focus_next = NodePath("../Heavy")
+focus_previous = NodePath("../Medium")
 group = ExtResource( 4 )
-_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
+
+[connection signal="focus_entered" from="." to="." method="_on_Difficulty_focus_entered"]
 
 [connection signal="button_up" from="Heavy" to="." method="_on_Heavy_button_up"]
 

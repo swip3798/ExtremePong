@@ -16,6 +16,7 @@ func _ready():
 	get_node(\"Exit\").set_text(\"Exit\")
 	button = false
 	started = true
+	grab_focus()
 	
 func _process(delta):
 	if not Input.is_action_pressed(\"ui_pause\"):
@@ -45,12 +46,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+focus_neighbour_left = NodePath("Return")
+focus_neighbour_top = NodePath("Return")
+focus_neighbour_right = NodePath("Return")
+focus_neighbour_bottom = NodePath("Return")
+focus_next = NodePath("Return")
+focus_previous = NodePath("Return")
+focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = SubResource( 1 )
-_sections_unfolded = [ "Pause", "Theme" ]
+_sections_unfolded = [ "Focus", "Pause", "Theme" ]
 
 [node name="TextureRect" type="TextureRect" parent="." index="0"]
 
@@ -86,7 +94,9 @@ margin_left = -116.0
 margin_top = -110.0
 margin_right = 116.0
 margin_bottom = -30.0
-_sections_unfolded = [ "Pause", "Rect", "Textures", "Visibility" ]
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../Exit")
+_sections_unfolded = [ "Focus", "Pause", "Rect", "Textures", "Visibility" ]
 
 [node name="Exit" parent="." index="2" instance=ExtResource( 2 )]
 
@@ -100,7 +110,9 @@ margin_left = -116.0
 margin_top = 30.0
 margin_right = 116.0
 margin_bottom = 110.0
-_sections_unfolded = [ "Pause", "Textures", "Visibility" ]
+focus_next = NodePath("../Return")
+focus_previous = NodePath("../Return")
+_sections_unfolded = [ "Focus", "Pause", "Textures", "Visibility" ]
 
 [connection signal="button_up" from="Return" to="." method="_on_Return_button_up"]
 

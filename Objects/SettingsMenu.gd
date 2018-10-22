@@ -16,7 +16,9 @@ func _ready():
 	get_node("Fullscreen").pressed = OS.is_window_fullscreen()
 	get_node("Power Factor Slider").grab_focus()
 
-
+func _process(delta):
+	if Input.is_action_pressed("ui_pause"):
+		_on_btnBack_button_up()
 
 
 func _on_Power_Factor_Slider_value_changed(value):

@@ -17,7 +17,7 @@ func _ready():
 	get_node("Power Factor Slider").grab_focus()
 
 func _process(delta):
-	if Input.is_action_pressed("ui_pause"):
+	if Input.is_action_pressed("ui_move_back"):
 		_on_btnBack_button_up()
 
 

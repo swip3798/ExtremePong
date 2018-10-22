@@ -22,7 +22,7 @@ func _ready():
 	grab_focus()
 	
 func _process(delta):
-	if Input.is_action_pressed("ui_pause"):
+	if Input.is_action_pressed("ui_move_back"):
 		go_back()
 
 func go_back():

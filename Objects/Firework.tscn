@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/firework.tres" type="Material" id=1]
 [ext_resource path="res://Objects/Explosion.gd" type="Script" id=2]
 
-[node name="Firework" type="Particles2D"]
+[node name="Firework" type="Particles2D" index="0"]
 
 emitting = false
 amount = 350

@@ -13,7 +13,7 @@ func _ready():
 	get_node("PlayButton").focus_mode = get_node("PlayButton").FOCUS_ALL
 	get_node("Settings").focus_mode = get_node("Settings").FOCUS_ALL
 	get_node("Exit").focus_mode = get_node("Exit").FOCUS_ALL
-	grab_focus()
+	get_node("PlayButton").grab_focus()
 
 
 func _on_Main_Menu_gui_input(ev):

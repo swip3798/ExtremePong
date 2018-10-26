@@ -19,7 +19,7 @@ func _ready():
 			get_node("Casual").pressed = true
 		else:
 			get_node("WTF").pressed = true
-	grab_focus()
+	get_node("Play").grab_focus()
 	
 func _process(delta):
 	if Input.is_action_pressed("ui_move_back"):

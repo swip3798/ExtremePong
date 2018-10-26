@@ -30,8 +30,10 @@ func move(delta):
 	set_position(get_position() + step)
 	if get_position()[1] < 0:
 		set_position(Vector2(get_position()[0], 5))
-	if get_position()[1] > ProjectSettings.get_setting("globals/height"):
+		speed[1] = abs(speed[1])
+	elif get_position()[1] > ProjectSettings.get_setting("globals/height"):
 		set_position(Vector2(get_position()[0], ProjectSettings.get_setting("globals/height") - 5))
+		speed[1] = -abs(speed[1])
 	
 
 func _on_Area2D_area_entered(area):

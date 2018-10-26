@@ -7,10 +7,7 @@ path="res://.import/splash_screen.png-c4325b211491e80389593ab522aa4a51.stex"
 [deps]
 
 source_file="res://splash_screen.png"
-source_md5="216694617d9cf6834ca105a1ea368700"
-
 dest_files=[ "res://.import/splash_screen.png-c4325b211491e80389593ab522aa4a51.stex" ]
-dest_md5="e5bee577034ff41a9776a60d15c6684b"
 
 [params]
 

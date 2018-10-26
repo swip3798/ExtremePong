@@ -8,7 +8,7 @@ func _ready():
 	get_node("ElementSpawner").set_scene("res://Objects/Firework.tscn")
 	get_node("ElementSpawner2").set_scene("res://Objects/Firework.tscn")
 	get_node("ElementSpawner3").set_scene("res://Objects/Firework.tscn")
-	grab_focus()
+	get_node("Back").grab_focus()
 	
 
 func _on_Back_button_up():

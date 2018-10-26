@@ -17,9 +17,10 @@ func _ready():
 	coll = get_node("Area2D/CollisionShape2D")
 	size =  get_node("Sprite").get_texture().get_size() * get_scale()
 	
-func _process(delta):	
+func _physics_process(delta):
 	move(delta)
 	#print(speedFactor)
+	
 	
 	
 func move(delta):

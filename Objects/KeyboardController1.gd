@@ -9,7 +9,7 @@ func set_player(player):
 	Player = player
 	set_process(true)
 	
-func _process(delta):
+func _physics_process(delta):
 	if Input.is_action_pressed("ui_up"):
 		Player.move_up(delta)
 	elif Input.is_action_pressed("ui_down"):

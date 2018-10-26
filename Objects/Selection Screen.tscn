@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Objects/Selection Screen.gd" type="Script" id=1]
 [ext_resource path="res://res/Main Menu.tres" type="DynamicFont" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://Objects/RetroToggleButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://res/btngrp_player.tres" type="ButtonGroup" id=6]
 [ext_resource path="res://Objects/RetroButton.tscn" type="PackedScene" id=7]
-[ext_resource path="res://res/Subtitle.tres" type="DynamicFont" id=8]
+[ext_resource path="res://res/diff_btn_group.tres" type="ButtonGroup" id=8]
+[ext_resource path="res://res/Subtitle.tres" type="DynamicFont" id=9]
 
 [node name="Selection Screen" type="Control"]
 
@@ -116,6 +117,7 @@ margin_right = 391.0
 margin_bottom = 462.0
 focus_next = NodePath("../Casual")
 focus_previous = NodePath("../2 Player")
+group = ExtResource( 8 )
 _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 [node name="Casual" parent="." index="7" instance=ExtResource( 5 )]
@@ -127,6 +129,7 @@ margin_right = 391.0
 margin_bottom = 562.0
 focus_next = NodePath("../Nooby")
 focus_previous = NodePath("../WTF")
+group = ExtResource( 8 )
 _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 [node name="Label2" type="Label" parent="." index="8"]
@@ -146,7 +149,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 9 )
 text = "Difficulty"
 percent_visible = 1.0
 lines_skipped = 0
@@ -162,6 +165,7 @@ margin_right = 390.0
 margin_bottom = 662.0
 focus_next = NodePath("../Play")
 focus_previous = NodePath("../Casual")
+group = ExtResource( 8 )
 _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 [connection signal="value_changed" from="PointsToWin" to="." method="_on_PointsToWin_value_changed"]

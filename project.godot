@@ -93,7 +93,7 @@ ui_move_back=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_na
 
 [physics]
 
-common/physics_fps=150
+common/physics_fps=210
 
 [rendering]
 

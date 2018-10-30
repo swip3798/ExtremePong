@@ -15,7 +15,7 @@ func _ready():
 		difficulty = 1
 		ProjectSettings.set_setting("globals/ai_difficulty", 1)
 		ProjectSettings.save()
-	set_process(false)
+	set_physics_process(false)
 	dtarget = get_parent().get_node("Debug Target")
 	go_to_point = Vector2(0, ProjectSettings.get_setting("globals/height") / 2)
 	
@@ -26,10 +26,10 @@ func set_ball(ball):
 	Ball = ball
 	
 func start_ai():
-	set_process(true)
+	set_physics_process(true)
 	
 func stop_ai():
-	set_process(false)
+	set_physics_process(false)
 
 func get_ball_y(BP, vB, bSize):
 	var P_x = Player.get_position()[0]
@@ -55,7 +55,7 @@ func get_ball_y(BP, vB, bSize):
 		return Vector2(Player.get_position()[0], newB_y)
 	
 			
-func _process(delta):
+func _physics_process(delta):
 	var target_point = 0
 	if difficulty == 0 or difficulty == 1 and Ball.speed[0] > 0 and Ball.speedFactor > 0 or difficulty == 1 and Ball.speed[0] < 0 and Ball.speedFactor < 0:
 		var rel_enterpoint = (Player.get_position() - Ball.get_position())[1] / 100

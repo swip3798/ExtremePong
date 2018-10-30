@@ -18,6 +18,7 @@ func _ready():
 		get_node("AIController").set_player(player2)
 		get_node("AIController").set_ball(ball)
 		get_node("AIController").start_ai()
+		get_node("KeyboardController2").set_player(player1)
 	else:
 		get_node("KeyboardController2").set_player(player2)
 	update_labels()

@@ -39,11 +39,11 @@ func _on_Area2D_area_entered(area):
 
 func inc_speed(inc):
 	speed += inc
-	print("increase speed on ", name, " on ", speed, " with ", inc)
+	print("Player logs: ", "increase speed on ", name, " on ", speed, " with ", inc)
 
 func dec_speed(dec):
 	speed -= dec
-	print("decreased speed on ", name, " on ", speed, " with ", dec)
+	print("Player logs: ", "decreased speed on ", name, " on ", speed, " with ", dec)
 
 func inc_size(percent):
 	percent = float(percent)
@@ -62,4 +62,4 @@ func dec_size(percent):
 	set_scale(scale)
 	
 func on_collision():
-	print("Collision detected")
+	print("Player logs: ", "Collision detected")

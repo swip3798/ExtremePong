@@ -75,28 +75,29 @@ func dec_speed(percent):
 	var rel = float(percent) / 100
 	speedFactor -= rel
 	limitSpeed()
-	print("decreased speed on ", name, " on ", speedFactor, " with ", rel, "%")
+	print("Ball logs: ", "decreased speed on ", name, " on ", speedFactor, " with ", rel, "%")
 	
 func inc_speed(percent):
 	limitSpeed()
 	var rel = float(percent) / 100
 	speedFactor += rel
-	print("increased speed on ", name, " on ", speedFactor, " with ", percent, "%")
+	print("Ball logs: ", "increased speed on ", name, " on ", speedFactor, " with ", percent, "%")
 	
 func inc_size(percent):
-	print("increased scale on ", name)
+	
 	var scle = get_scale() * (1 + float(percent) / 100)
 	if scle[1] > 6:
 		scle= Vector2(6, 6)
 	set_scale(scle)
+	print("Ball logs: ", "increased scale of ball on ", name, " to ", scale , " with ", percent, "%")
 	size =  get_node("Sprite").get_texture().get_size() * get_scale()
 	
 func dec_size(percent):
-	print("decreased scale on ", name)
 	var scle = get_scale() * (1 - float(percent) / 100)
 	if scle[1] < 0.3:
 		scle= Vector2(0.3, 0.3)
 	set_scale(scle)
+	print("Ball logs: ", "increased scale of ball on ", name, " to ", scale , " with ", percent, "%")
 	size =  get_node("Sprite").get_texture().get_size() * get_scale()
 	
 func reset():

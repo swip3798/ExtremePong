@@ -15,6 +15,7 @@ func _ready():
 		difficulty = 1
 		ProjectSettings.set_setting("globals/ai_difficulty", 1)
 		ProjectSettings.save()
+	print("Difficulty is set to ", difficulty)
 	set_physics_process(false)
 	dtarget = get_parent().get_node("Debug Target")
 	go_to_point = Vector2(0, ProjectSettings.get_setting("globals/height") / 2)

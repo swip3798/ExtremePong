@@ -15,7 +15,7 @@ func _ready():
 	symbol = get_node("Symbol")
 	randomize()
 	state = randi() % 8
-#	state = 4
+	state = 5
 	if state >=0 and state <=3:
 		background.set_modulate(Color("00ffed"))
 		if state == 0:
@@ -40,14 +40,11 @@ func _ready():
 
 
 func _on_activated(area):
-	print("Area: ", area.name)
-	print("Area.filename: ", area.get_parent().filename)
 	if area.filename != "res://Objects/Border.tscn" and area.get_parent().name.find("PowerUP", 0) == -1:
 		var object = area.get_parent()
-		print("Object: ", object.name)
 		if state >=0 and state <=3:
 			var aply = object.activePlayer
-			print(aply.name)
+			print("Powerup logs: ", "Player mode, set powerup effect with state ", state)
 			if state == 0:
 				aply.inc_speed((randi() % 100 + 50)*powerFactor)
 			elif state == 1:
@@ -57,7 +54,7 @@ func _on_activated(area):
 			elif state == 3:
 				aply.dec_size((randi() % 30 + 10)*powerFactor)
 		else:
-			print("Ball mode")
+			print("Powerup logs: ", "Ball mode, set powerup effect with state ", state)
 			var aply = object
 			if state == 4:
 				aply.inc_speed((randi() % 30 + 10)*powerFactor)

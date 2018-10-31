@@ -7,7 +7,10 @@ path="res://.import/togglebutton_hover.png-099829570e74668599cbab2a9881bfd2.stex
 [deps]
 
 source_file="res://assets/togglebutton_hover.png"
+source_md5="5af690b907ac804d5162c6ca68723062"
+
 dest_files=[ "res://.import/togglebutton_hover.png-099829570e74668599cbab2a9881bfd2.stex" ]
+dest_md5="c38d510a62d89f6afd030ac4c26a0d4b"
 
 [params]
 

@@ -10,7 +10,7 @@
 [ext_resource path="res://Objects/RetroButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://res/diff_btn_group.tres" type="ButtonGroup" id=9]
 
-[node name="Selection Screen" type="Control" index="0"]
+[node name="Selection Screen" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0

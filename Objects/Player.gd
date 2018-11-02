@@ -26,13 +26,19 @@ func _ready():
 func move_up(delta):
 	posY -= speed*delta
 	if (posY - (height/2)) < 0:
-		posY = height/2
+		if height < globalData.getOption("height"):
+			posY = height/2
+		else:
+			posY = globalData.getOption("height") / 2
 	set_position(Vector2(posX,posY))
 	
 func move_down(delta):
 	posY += speed*delta
 	if (posY+(height/2)) > globalData.getOption("height"):
-		posY = globalData.getOption("height")-(height/2)
+		if height < globalData.getOption("height"):
+			posY = globalData.getOption("height")-(height/2)
+		else:
+			posY = globalData.getOption("height") / 2
 	set_position(Vector2(posX,posY))
 
 

@@ -5,7 +5,7 @@
 [ext_resource path="res://Objects/RetroToggleButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://res/diff_btn_group.tres" type="ButtonGroup" id=4]
 
-[node name="Difficulty" type="Control"]
+[node name="Difficulty" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0

@@ -7,18 +7,19 @@ var dtarget
 var calculated
 var go_to_point
 
+var globalData
+
 func _ready():
+
+	globalData = get_node("/root/GlobalData")
+
 	calculated = false
-	if ProjectSettings.has_setting("globals/ai_difficulty"):
-		difficulty = ProjectSettings.get_setting("globals/ai_difficulty")
-	else:
-		difficulty = 1
-		ProjectSettings.set_setting("globals/ai_difficulty", 1)
-		ProjectSettings.save()
+	difficulty = globalData.getOption("ai_difficulty")
+
 	print("Difficulty is set to ", difficulty)
 	set_physics_process(false)
 	dtarget = get_parent().get_node("Debug Target")
-	go_to_point = Vector2(0, ProjectSettings.get_setting("globals/height") / 2)
+	go_to_point = Vector2(0, globalData.getOption("height") / 2)
 	
 func set_player(player):
 	Player = player
@@ -46,9 +47,9 @@ func get_ball_y(BP, vB, bSize):
 		#Revert invY
 		vB = Vector2(vBx, -vBy)
 		return get_ball_y(newPoint, vB, bSize)
-	elif newB_y > ProjectSettings.get_setting("globals/height"):
-		var newPoint_x = (abs(ProjectSettings.get_setting("globals/height") - B_y)/vBy) * vBx + B_x
-		var newPoint = Vector2(newPoint_x, ProjectSettings.get_setting("globals/height"))
+	elif newB_y > globalData.getOption("height"):
+		var newPoint_x = (abs(globalData.getOption("height") - B_y)/vBy) * vBx + B_x
+		var newPoint = Vector2(newPoint_x, globalData.getOption("height"))
 		#Revert invY
 		vB = Vector2(vBx, -vBy)
 		return get_ball_y(newPoint, vB, bSize)
@@ -77,7 +78,7 @@ func _physics_process(delta):
 			dtarget.set_position(go_to_point)
 			calculated = true
 		elif Ball.speed == Vector2(0,0):
-			go_to_point = Vector2(Player.get_position()[0], ProjectSettings.get_setting("globals/height") / 2)
+			go_to_point = Vector2(Player.get_position()[0], globalData.getOption("height") / 2)
 			dtarget.set_position(go_to_point)
 		if Player.speed > 0:
 			if Player.get_position()[1] < go_to_point[1]:

@@ -9,9 +9,13 @@ var activePlayer
 var preserveSpeed
 var height
 var size
+
+var globalData
+
 signal collide_with_something
 
 func _ready():
+	globalData = get_node("/root/GlobalData")
 	speed = Vector2(-600, -200)
 	speedFactor = 1.0
 	coll = get_node("Area2D/CollisionShape2D")
@@ -32,8 +36,8 @@ func move(delta):
 	if get_position()[1] < 0:
 		set_position(Vector2(get_position()[0], 5))
 		speed[1] = abs(speed[1])
-	elif get_position()[1] > ProjectSettings.get_setting("globals/height"):
-		set_position(Vector2(get_position()[0], ProjectSettings.get_setting("globals/height") - 5))
+	elif get_position()[1] > globalData.getOption("height"):
+		set_position(Vector2(get_position()[0], globalData.getOption("height") - 5))
 		speed[1] = -abs(speed[1])
 	
 
@@ -104,7 +108,7 @@ func reset():
 	preserveSpeed  = Vector2(speed[0], 0)
 	speed = Vector2(0,0)
 	get_node("Timer").start()
-	set_position(Vector2(ProjectSettings.get_setting("globals/width")/2, ProjectSettings.get_setting("globals/height")/2))
+	set_position(Vector2(globalData.getOption("width")/2, globalData.getOption("height")/2))
 
 func _on_Timer_timeout():
 	speed = preserveSpeed

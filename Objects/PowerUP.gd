@@ -6,11 +6,13 @@ var symbol
 var scaleIdx
 var powerFactor
 
+var globalData
+
 func _ready():
-	if ProjectSettings.has_setting("globals/powerfactor"):
-		powerFactor =  ProjectSettings.get_setting("globals/powerfactor")
-	else:
-		powerFactor = 5.0
+	globalData = get_node("/root/GlobalData")
+	
+	powerFactor =  globalData.getOption("powerfactor")
+	
 	background = get_node("background")
 	symbol = get_node("Symbol")
 	randomize()

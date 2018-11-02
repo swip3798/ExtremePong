@@ -7,7 +7,12 @@ signal collision_detected
 var points
 var width
 
+var globalData
+
 func _ready():
+
+	globalData = get_node("/root/GlobalData")
+
 	posX = get_position()[0]
 	posY = get_position()[1]
 	speed=500
@@ -22,8 +27,8 @@ func move_up(delta):
 	
 func move_down(delta):
 	posY += speed*delta
-	if posY > ProjectSettings.get_setting("globals/height"):
-		posY = ProjectSettings.get_setting("globals/height")
+	if posY > globalData.getOption("height"):
+		posY = globalData.getOption("height")
 	set_position(Vector2(posX,posY))
 	
 func limit_speed():

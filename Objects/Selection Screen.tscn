@@ -140,7 +140,7 @@ _sections_unfolded = [ "Focus", "Textures", "Visibility" ]
 
 [node name="Back" parent="." index="7" instance=ExtResource( 6 )]
 
-modulate = Color( 0.480667, 0, 0, 1 )
+modulate = Color( 0.582764, 0.601563, 0, 1 )
 margin_left = 39.0
 margin_top = 619.0
 margin_right = 218.0

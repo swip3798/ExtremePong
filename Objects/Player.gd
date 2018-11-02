@@ -17,7 +17,7 @@ func _ready():
 
 	posX = get_position()[0]
 	posY = get_position()[1]
-	speed=500
+	speed = 500
 	points = 0
 	texture = get_node("Sprite").texture
 	width = texture.get_size()[0]
@@ -53,6 +53,7 @@ func inc_size(percent):
 	scale = get_scale()
 	scale[1] += percent
 	set_scale(scale)
+	height = height * get_scale()[1]
 	
 func dec_size(percent):
 	percent = float(percent)
@@ -62,6 +63,7 @@ func dec_size(percent):
 	if scale[1] < 0.2:
 		scale[1] = 0.2
 	set_scale(scale)
+	height = height * get_scale()[1]
 	
 func on_collision():
 	print("Player logs: ", "Collision detected")

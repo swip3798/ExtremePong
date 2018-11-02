@@ -7,6 +7,7 @@ signal collision_detected
 var points
 var width
 var height
+var origHeight
 var texture
 
 var globalData
@@ -22,6 +23,7 @@ func _ready():
 	texture = get_node("Sprite").texture
 	width = texture.get_size()[0]
 	height = texture.get_size()[1]
+	origHeight = height
 
 func move_up(delta):
 	posY -= speed*delta
@@ -59,8 +61,8 @@ func inc_size(percent):
 	scale = get_scale()
 	scale[1] += percent
 	set_scale(scale)
-	height = height * get_scale()[1]
-	print("Player logs: ", "increase size on ", name, " to ", height, " with ", percent)
+	height = origHeight * get_scale()[1]
+	print("Player logs: ", "increase size on ", name, " to ", height, " by ", percent, ". New Player scale is ", scale[1])
 	
 func dec_size(percent):
 	percent = float(percent)
@@ -70,8 +72,8 @@ func dec_size(percent):
 	if scale[1] < 0.2:
 		scale[1] = 0.2
 	set_scale(scale)
-	height = height * get_scale()[1]
-	print("Player logs: ", "decreased size on ", name, " to ", height, " with ", percent)
+	height = origHeight * get_scale()[1]
+	print("Player logs: ", "decreased size on ", name, " to ", height, " by ", percent, ". New Player scale is ", scale[1])
 	
 func on_collision():
 	print("Player logs: ", "Collision detected")

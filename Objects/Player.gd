@@ -6,6 +6,8 @@ var posY
 signal collision_detected
 var points
 var width
+var height
+var texture
 
 var globalData
 
@@ -17,26 +19,21 @@ func _ready():
 	posY = get_position()[1]
 	speed=500
 	points = 0
-	width = get_node("Sprite").texture.get_size()[0]
+	texture = get_node("Sprite").texture
+	width = texture.get_size()[0]
+	height = texture.get_size()[1]
 
 func move_up(delta):
 	posY -= speed*delta
-	if posY < 0:
-		posY = 0
+	if (posY - (height/2)) < 0:
+		posY = height/2
 	set_position(Vector2(posX,posY))
 	
 func move_down(delta):
 	posY += speed*delta
-	if posY > globalData.getOption("height"):
-		posY = globalData.getOption("height")
+	if (posY+(height/2)) > globalData.getOption("height"):
+		posY = globalData.getOption("height")-(height/2)
 	set_position(Vector2(posX,posY))
-	
-func limit_speed():
-	if abs(speed) < 100:
-		if speed < 0:
-			speed = 100
-		else:
-			speed = -100
 
 
 func _on_Area2D_area_entered(area):

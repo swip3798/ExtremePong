@@ -4,7 +4,7 @@ var speed
 var speedFactor
 var posX
 var posY
-var coll
+var spriteSize
 var activePlayer
 var preserveSpeed
 var size
@@ -20,8 +20,9 @@ func _ready():
 	globalData = get_node("/root/GlobalData")
 	speed = Vector2(-600, -200)
 	speedFactor = 1.0
-	coll = get_node("Area2D/CollisionShape2D")
-	size = get_node("Area2D/CollisionShape2D").get_transform().x
+	spriteSize = get_node("Sprite").texture.get_size()[0]
+	size = spriteSize * get_scale()[0] * get_node("Sprite").get_scale()[0]
+	print("Initial Ball size: ", size)
 	
 	origSpeed = speed
 	origSize = size
@@ -35,10 +36,10 @@ func move(delta):
 	step[0] = clamp(step[0], -35, 35)
 	
 	translate(step)
-	if get_position()[1] < 0:
+	if get_position()[1]-size/2 < 0:
 		set_position(Vector2(get_position()[0], size/2))
 		speed[1] = abs(speed[1])
-	elif get_position()[1] > globalData.getOption("height"):
+	elif get_position()[1]+size/2 > globalData.getOption("height"):
 		set_position(Vector2(get_position()[0], globalData.getOption("height") - size/2))
 		speed[1] = -abs(speed[1])
 	
@@ -75,7 +76,7 @@ func inc_size(percent):
 	scale[0] = clamp(scale[0]+rel, 0.3, 4)
 	scale[1] = scale[0]
 	set_scale(scale)
-	size = get_node("Area2D/CollisionShape2D").get_transform().x
+	size = spriteSize * get_scale()[0] * get_node("Sprite").get_scale()[0]
 	print("Ball logs: ", "increased scale of ball on ", name, " by ", rel , ". New ball Scale is ", scale)
 	print("Ball logs: ", "New ball Size is ", size)
 	
@@ -85,7 +86,7 @@ func dec_size(percent):
 	scale[0] = clamp(scale[0]-rel, 0.3, 4)
 	scale[1] = scale[0]
 	set_scale(scale)
-	size = get_node("Area2D/CollisionShape2D").get_transform().x
+	size = spriteSize * get_scale()[0] * get_node("Sprite").get_scale()[0]
 	print("Ball logs: ", "decreased scale of ball on ", name, " by ", rel , ". New ball Scale is ", scale)
 	print("Ball logs: ", "New ball Size is ", size)
 	

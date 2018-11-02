@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Objects/Selection Screen.gd" type="Script" id=1]
-[ext_resource path="res://res/Main Menu.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Objects/WorldEnvironment.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/Retro Slider.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Objects/RetroToggleButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://res/btngrp_player.tres" type="ButtonGroup" id=6]
-[ext_resource path="res://Objects/RetroButton.tscn" type="PackedScene" id=7]
-[ext_resource path="res://res/diff_btn_group.tres" type="ButtonGroup" id=8]
-[ext_resource path="res://res/Subtitle.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Objects/WorldEnvironment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Retro Slider.tscn" type="PackedScene" id=3]
+[ext_resource path="res://res/Main Menu.tres" type="DynamicFont" id=4]
+[ext_resource path="res://res/Subtitle.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Objects/RetroToggleButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://res/btngrp_player.tres" type="ButtonGroup" id=7]
+[ext_resource path="res://Objects/RetroButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://res/diff_btn_group.tres" type="ButtonGroup" id=9]
 
 [node name="Selection Screen" type="Control"]
 
@@ -35,7 +35,24 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Title" type="Label" parent="." index="0"]
+[node name="WorldEnvironment" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="PointsToWin" parent="." index="1" instance=ExtResource( 3 )]
+
+modulate = Color( 0, 1, 0.179688, 1 )
+margin_left = 640.0
+margin_top = 265.0
+margin_right = 892.0
+margin_bottom = 342.0
+focus_neighbour_left = NodePath("../WTF")
+focus_neighbour_right = NodePath("../Play")
+focus_neighbour_bottom = NodePath("../1 Player")
+min_value = 5.0
+max_value = 20.0
+value = 5.0
+_sections_unfolded = [ "Focus", "Visibility", "custom_icons", "custom_styles" ]
+
+[node name="Title" type="Label" parent="." index="2"]
 
 modulate = Color( 1, 0, 0.773438, 1 )
 anchor_left = 0.0
@@ -49,7 +66,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Choose your destiny!"
 align = 1
 valign = 1
@@ -58,114 +75,121 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Visibility", "custom_fonts" ]
 
-[node name="WorldEnvironment" parent="." index="1" instance=ExtResource( 3 )]
-
-[node name="PointsToWin" parent="." index="2" instance=ExtResource( 4 )]
-
-modulate = Color( 0, 1, 0.179688, 1 )
-margin_left = 374.0
-margin_top = 201.0
-margin_right = 882.0
-margin_bottom = 278.0
-focus_next = NodePath("../1 Player")
-focus_previous = NodePath("../Play")
-min_value = 5.0
-max_value = 50.0
-value = 5.0
-_sections_unfolded = [ "Focus", "Visibility", "custom_icons", "custom_styles" ]
-
-[node name="1 Player" parent="." index="3" instance=ExtResource( 5 )]
-
-modulate = Color( 1, 0.466667, 0, 1 )
-margin_left = 909.0
-margin_top = 275.0
-margin_right = 1167.0
-margin_bottom = 355.0
-focus_next = NodePath("../2 Player")
-focus_previous = NodePath("../PointsToWin")
-group = ExtResource( 6 )
-_sections_unfolded = [ "Focus", "Textures", "Visibility" ]
-
-[node name="2 Player" parent="." index="4" instance=ExtResource( 5 )]
-
-modulate = Color( 1, 0.46875, 0, 1 )
-margin_left = 909.0
-margin_top = 389.0
-margin_right = 1167.0
-margin_bottom = 469.0
-focus_next = NodePath("../WTF")
-focus_previous = NodePath("../1 Player")
-group = ExtResource( 6 )
-_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
-
-[node name="Play" parent="." index="5" instance=ExtResource( 7 )]
-
-margin_left = 685.0
-margin_top = 559.0
-margin_right = 987.0
-margin_bottom = 670.0
-focus_next = NodePath("../PointsToWin")
-focus_previous = NodePath("../Nooby")
-_sections_unfolded = [ "Focus", "Textures", "Visibility" ]
-
-[node name="WTF" parent="." index="6" instance=ExtResource( 5 )]
-
-modulate = Color( 1, 0, 0, 1 )
-margin_left = 159.0
-margin_top = 382.0
-margin_right = 391.0
-margin_bottom = 462.0
-focus_next = NodePath("../Casual")
-focus_previous = NodePath("../2 Player")
-group = ExtResource( 8 )
-_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
-
-[node name="Casual" parent="." index="7" instance=ExtResource( 5 )]
-
-modulate = Color( 0.921875, 1, 0, 1 )
-margin_left = 159.0
-margin_top = 482.0
-margin_right = 391.0
-margin_bottom = 562.0
-focus_next = NodePath("../Nooby")
-focus_previous = NodePath("../WTF")
-group = ExtResource( 8 )
-_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
-
-[node name="Label2" type="Label" parent="." index="8"]
+[node name="Label2" type="Label" parent="." index="3"]
 
 modulate = Color( 1, 0.375, 0, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 108.0
-margin_top = 296.0
-margin_right = 458.0
-margin_bottom = 359.0
+margin_left = 233.0
+margin_top = 181.0
+margin_right = 583.0
+margin_bottom = 244.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 5 )
 text = "Difficulty"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Visibility", "custom_fonts" ]
 
-[node name="Nooby" parent="." index="9" instance=ExtResource( 5 )]
+[node name="1 Player" parent="." index="4" instance=ExtResource( 6 )]
+
+modulate = Color( 1, 0.466667, 0, 1 )
+margin_left = 635.0
+margin_top = 372.0
+margin_right = 893.0
+margin_bottom = 452.0
+focus_neighbour_left = NodePath("../Casual")
+focus_neighbour_top = NodePath("../PointsToWin")
+focus_neighbour_right = NodePath("../Play")
+focus_neighbour_bottom = NodePath("../2 Player")
+group = ExtResource( 7 )
+_sections_unfolded = [ "Focus", "Textures", "Visibility" ]
+
+[node name="2 Player" parent="." index="5" instance=ExtResource( 6 )]
+
+modulate = Color( 1, 0.46875, 0, 1 )
+margin_left = 636.0
+margin_top = 468.0
+margin_right = 894.0
+margin_bottom = 548.0
+focus_neighbour_left = NodePath("../Nooby")
+focus_neighbour_top = NodePath("../1 Player")
+focus_neighbour_right = NodePath("../Play")
+focus_neighbour_bottom = NodePath("../Play")
+focus_previous = NodePath("../1 Player")
+group = ExtResource( 7 )
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
+
+[node name="Play" parent="." index="6" instance=ExtResource( 8 )]
+
+margin_left = 933.0
+margin_top = 585.0
+margin_right = 1235.0
+margin_bottom = 696.0
+focus_neighbour_left = NodePath("../Back")
+focus_neighbour_top = NodePath("../2 Player")
+_sections_unfolded = [ "Focus", "Textures", "Visibility" ]
+
+[node name="Back" parent="." index="7" instance=ExtResource( 6 )]
+
+modulate = Color( 0.582764, 0.601563, 0, 1 )
+margin_left = 39.0
+margin_top = 619.0
+margin_right = 218.0
+margin_bottom = 698.0
+focus_neighbour_top = NodePath("../Nooby")
+focus_neighbour_right = NodePath("../Play")
+toggle_mode = false
+_sections_unfolded = [ "Focus", "Mouse", "Pause", "Rect", "Textures", "Visibility" ]
+
+[node name="WTF" parent="." index="8" instance=ExtResource( 6 )]
+
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 284.0
+margin_top = 267.0
+margin_right = 516.0
+margin_bottom = 347.0
+focus_neighbour_left = NodePath("../Back")
+focus_neighbour_right = NodePath("../PointsToWin")
+focus_neighbour_bottom = NodePath("../Casual")
+group = ExtResource( 9 )
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
+
+[node name="Casual" parent="." index="9" instance=ExtResource( 6 )]
+
+modulate = Color( 0.921875, 1, 0, 1 )
+margin_left = 284.0
+margin_top = 367.0
+margin_right = 516.0
+margin_bottom = 447.0
+focus_neighbour_left = NodePath("../Back")
+focus_neighbour_top = NodePath("../WTF")
+focus_neighbour_right = NodePath("../1 Player")
+focus_neighbour_bottom = NodePath("../Nooby")
+group = ExtResource( 9 )
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
+
+[node name="Nooby" parent="." index="10" instance=ExtResource( 6 )]
 
 modulate = Color( 0.125, 1, 0, 1 )
-margin_left = 159.0
-margin_top = 582.0
-margin_right = 390.0
-margin_bottom = 662.0
-focus_next = NodePath("../Play")
+margin_left = 284.0
+margin_top = 467.0
+margin_right = 515.0
+margin_bottom = 547.0
+focus_neighbour_left = NodePath("../Back")
+focus_neighbour_top = NodePath("../Casual")
+focus_neighbour_right = NodePath("../2 Player")
+focus_neighbour_bottom = NodePath("../Back")
 focus_previous = NodePath("../Casual")
-group = ExtResource( 8 )
+group = ExtResource( 9 )
 _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 [connection signal="value_changed" from="PointsToWin" to="." method="_on_PointsToWin_value_changed"]
@@ -175,6 +199,8 @@ _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 [connection signal="button_up" from="2 Player" to="." method="_on_2_Player_button_up"]
 
 [connection signal="button_up" from="Play" to="." method="_on_Play_button_up"]
+
+[connection signal="button_up" from="Back" to="." method="_on_Back_button_up"]
 
 [connection signal="button_up" from="WTF" to="." method="_on_WTF_button_up"]
 

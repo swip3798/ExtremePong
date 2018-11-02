@@ -6,32 +6,40 @@ var posY
 signal collision_detected
 var points
 var width
+var height
+var texture
+
+var globalData
 
 func _ready():
+
+	globalData = get_node("/root/GlobalData")
+
 	posX = get_position()[0]
 	posY = get_position()[1]
-	speed=500
+	speed = 500
 	points = 0
-	width = get_node("Sprite").texture.get_size()[0]
+	texture = get_node("Sprite").texture
+	width = texture.get_size()[0]
+	height = texture.get_size()[1]
 
 func move_up(delta):
 	posY -= speed*delta
-	if posY < 0:
-		posY = 0
+	if (posY - (height/2)) < 0:
+		if height < globalData.getOption("height"):
+			posY = height/2
+		else:
+			posY = globalData.getOption("height") / 2
 	set_position(Vector2(posX,posY))
 	
 func move_down(delta):
 	posY += speed*delta
-	if posY > ProjectSettings.get_setting("globals/height"):
-		posY = ProjectSettings.get_setting("globals/height")
-	set_position(Vector2(posX,posY))
-	
-func limit_speed():
-	if abs(speed) < 100:
-		if speed < 0:
-			speed = 100
+	if (posY+(height/2)) > globalData.getOption("height"):
+		if height < globalData.getOption("height"):
+			posY = globalData.getOption("height")-(height/2)
 		else:
-			speed = -100
+			posY = globalData.getOption("height") / 2
+	set_position(Vector2(posX,posY))
 
 
 func _on_Area2D_area_entered(area):
@@ -51,6 +59,7 @@ func inc_size(percent):
 	scale = get_scale()
 	scale[1] += percent
 	set_scale(scale)
+	height = height * get_scale()[1]
 	
 func dec_size(percent):
 	percent = float(percent)
@@ -60,6 +69,7 @@ func dec_size(percent):
 	if scale[1] < 0.2:
 		scale[1] = 0.2
 	set_scale(scale)
+	height = height * get_scale()[1]
 	
 func on_collision():
 	print("Player logs: ", "Collision detected")

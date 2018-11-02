@@ -1,9 +1,15 @@
 extends Control
 
+var globalData
+
 func _ready():
-	var winner = "What are you doing here, go away!"
-	if ProjectSettings.has_setting("globals/winner"):
-		winner = ProjectSettings.get_setting("globals/winner") + " WINS!"
+	globalData = get_node("/root/GlobalData")
+	var winner
+	if globalData.getOption("winner") == "":
+		winner = "What are you doing here, go away!"
+	else:
+		winner = globalData.getOption("winner") + " WINS!"
+
 	get_node("WinText").text = winner
 	get_node("ElementSpawner").set_scene("res://Objects/Firework.tscn")
 	get_node("ElementSpawner2").set_scene("res://Objects/Firework.tscn")

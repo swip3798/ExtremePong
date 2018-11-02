@@ -17,7 +17,7 @@ func _ready():
 	symbol = get_node("Symbol")
 	randomize()
 	state = randi() % 8
-	state = 2
+#	state = 2
 	if state >=0 and state <=3:
 		background.set_modulate(Color("00ffed"))
 		if state == 0:

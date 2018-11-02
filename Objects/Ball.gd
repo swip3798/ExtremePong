@@ -30,7 +30,6 @@ func _ready():
 func _physics_process(delta):
 	move(delta)
 	
-	
 func move(delta):
 	var step = (speed*delta*speedFactor)
 	step[0] = clamp(step[0], -35, 35)
@@ -59,19 +58,7 @@ func _on_Area2D_area_entered(area):
 func invX():
 	speed[0] = -speed[0]
 
-	
-func limitSpeed():
-	if abs(speedFactor) < 0.5:
-		if speedFactor < 0:
-			speedFactor = -0.5
-		else:
-			speedFactor = 0.5
-	elif abs(speedFactor) > 2.5 + scale[0] * 0.5:
-		if speedFactor < 0:
-			speedFactor = -2.5 + scale[0] * 0.5
-		else:
-			speedFactor = 2.5 + scale[0] * 0.5
-	
+
 func dec_speed(percent):
 	var rel = float(percent) / 100
 	speedFactor = clamp(speedFactor-rel, 0.5, 2.5 + (get_scale()[0]*0.5))

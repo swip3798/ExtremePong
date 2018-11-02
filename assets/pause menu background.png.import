@@ -7,10 +7,7 @@ path="res://.import/pause menu background.png-850668861e9ce06fbe272fea9f8c6ed8.s
 [deps]
 
 source_file="res://assets/pause menu background.png"
-source_md5="689abc3158373c8622abf7d890089fe9"
-
 dest_files=[ "res://.import/pause menu background.png-850668861e9ce06fbe272fea9f8c6ed8.stex" ]
-dest_md5="dadc3fff81e224a634337c7d8a9e2cce"
 
 [params]
 

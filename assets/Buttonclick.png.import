@@ -7,10 +7,7 @@ path="res://.import/Buttonclick.png-1251d4eaef557f47a228110d7ed82074.stex"
 [deps]
 
 source_file="res://assets/Buttonclick.png"
-source_md5="e0d7f7c3e2eade3490423aae7ea04035"
-
 dest_files=[ "res://.import/Buttonclick.png-1251d4eaef557f47a228110d7ed82074.stex" ]
-dest_md5="777b271a5d4c082590672e0a68c7e832"
 
 [params]
 

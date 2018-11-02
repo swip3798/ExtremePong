@@ -7,10 +7,7 @@ path="res://.import/grabber highlight.png-732e0a97e74e23dd43c00848061d5638.stex"
 [deps]
 
 source_file="res://assets/grabber highlight.png"
-source_md5="bfbe90624599340cb27306673f1127cd"
-
 dest_files=[ "res://.import/grabber highlight.png-732e0a97e74e23dd43c00848061d5638.stex" ]
-dest_md5="aae6508ed3ef548c77c55561be591210"
 
 [params]
 

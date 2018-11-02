@@ -7,10 +7,7 @@ path="res://.import/particle.png-5e5e4f76b889a93c8b085c65be799145.stex"
 [deps]
 
 source_file="res://assets/particle.png"
-source_md5="a40d9c4204fcf9bdd6f1006df9eb51c4"
-
 dest_files=[ "res://.import/particle.png-5e5e4f76b889a93c8b085c65be799145.stex" ]
-dest_md5="380ce24bb846a24ce7aebd1d6064621c"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/retroplayer.png-ddade9b68d3c45f53b40689470d3e275.stex"
 [deps]
 
 source_file="res://assets/retroplayer.png"
-source_md5="eabbe75a2864b3969b558fd9abb57ad5"
-
 dest_files=[ "res://.import/retroplayer.png-ddade9b68d3c45f53b40689470d3e275.stex" ]
-dest_md5="801859b65a1af2da7426cbe2e9ecd130"
 
 [params]
 

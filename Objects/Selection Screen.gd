@@ -29,12 +29,14 @@ func go_back():
 	
 func _on_1_Player_button_up():
 	globalData.setOption("ai_enabled", true)
-	
 
 
 func _on_2_Player_button_up():
 	globalData.setOption("ai_enabled", false)
 
+
+func _on_Back_button_up():
+	go_back()
 
 func _on_Play_button_up():
 	get_tree().change_scene("res://Objects/Level.tscn")

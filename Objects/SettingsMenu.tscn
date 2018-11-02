@@ -120,6 +120,7 @@ margin_right = 406.0
 margin_bottom = 539.0
 focus_next = NodePath("../Vsync")
 focus_previous = NodePath("../Power Factor Slider")
+texture_focused = null
 _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 [node name="Vsync" parent="." index="5" instance=ExtResource( 6 )]
@@ -135,6 +136,7 @@ margin_right = 166.0
 margin_bottom = 179.0
 focus_next = NodePath("../Glow")
 focus_previous = NodePath("../Fullscreen")
+texture_focused = null
 _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 [node name="Glow" parent="." index="6" instance=ExtResource( 6 )]
@@ -146,6 +148,7 @@ margin_right = 1206.0
 margin_bottom = 539.0
 focus_next = NodePath("../btnBack")
 focus_previous = NodePath("../Vsync")
+texture_focused = null
 _sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
 [node name="WorldEnvironment" parent="." index="7" instance=ExtResource( 7 )]

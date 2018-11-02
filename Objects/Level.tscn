@@ -23,6 +23,19 @@ position = Vector2( 964.637, 131.106 )
 z_index = -1
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
+[node name="Sprite" parent="Ball" index="1"]
+
+position = Vector2( 0, 0 )
+
+[node name="Area2D" parent="Ball" index="2"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" parent="Ball/Area2D" index="0"]
+
+position = Vector2( 0, 0 )
+scale = Vector2( 1.5, 1.5 )
+
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 modulate = Color( 0, 1, 1, 1 )
@@ -157,3 +170,4 @@ _sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 [connection signal="timeout" from="Spawner" to="Spawner" method="_on_Spawner_timeout"]
 
 
+[editable path="Ball"]

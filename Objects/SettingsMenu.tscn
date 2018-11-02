@@ -8,7 +8,7 @@
 [ext_resource path="res://Objects/RetroToggleButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/WorldEnvironment.tscn" type="PackedScene" id=7]
 
-[node name="SettingsMenu" type="Control"]
+[node name="SettingsMenu" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0

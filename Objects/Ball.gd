@@ -29,10 +29,9 @@ func _physics_process(delta):
 	
 func move(delta):
 	var step = (speed*delta*speedFactor)
-	if abs(step[0]) > 35:
-		step = Vector2(35 * (step[0] / abs(step[0])), step[1])
-#	print(position)
-	set_position(get_position() + step)
+	step[0] = clamp(step[0], -35, 35)
+	
+	translate(step)
 	if get_position()[1] < 0:
 		set_position(Vector2(get_position()[0], 5))
 		speed[1] = abs(speed[1])

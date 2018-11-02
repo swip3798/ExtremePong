@@ -7,8 +7,10 @@ var posY
 var coll
 var activePlayer
 var preserveSpeed
-var height
 var size
+
+var origSpeed
+var origSize
 
 var globalData
 
@@ -21,10 +23,12 @@ func _ready():
 	coll = get_node("Area2D/CollisionShape2D")
 	size =  get_node("Sprite").get_texture().get_size() * get_scale()
 	
+	origSpeed = speed
+	origSize = size
+	
+	
 func _physics_process(delta):
 	move(delta)
-	#print(speedFactor)
-	
 	
 	
 func move(delta):
@@ -46,21 +50,15 @@ func _on_Area2D_area_entered(area):
 		invX()
 		activePlayer = object
 		var rel_enterpoint = (object.get_position() - get_position())[1] / 100
-		if rel_enterpoint < 0:
-			speed[1] = abs(speed[0] * rel_enterpoint)
-		elif rel_enterpoint > 0:
-			speed[1] = abs(speed[0] * rel_enterpoint)
+		speed[1] = abs(speed[0] * rel_enterpoint)
+		if rel_enterpoint > 0:
 			speed[1] = -speed[1]
-	elif area.filename == "res://Objects/Border.tscn":
-		invY()
-		emit_signal("collide_with_something")
 	else:
 		emit_signal("collide_with_something")
 
 func invX():
 	speed[0] = -speed[0]
-func invY():
-	speed[1] = -speed[1]
+
 	
 func limitSpeed():
 	if abs(speedFactor) < 0.5:
@@ -76,35 +74,34 @@ func limitSpeed():
 	
 func dec_speed(percent):
 	var rel = float(percent) / 100
-	speedFactor -= rel
-	limitSpeed()
-	print("Ball logs: ", "decreased speed on ", name, " on ", speedFactor, " with ", rel, "%")
+	speedFactor = clamp(speedFactor-rel, 0.5, 2.5 + (get_scale()[0]*0.5))
+	print("Ball logs: ", "decreased speed on ", name, " by ", rel, ". New ball Speedfactor is ", speedFactor)
 	
 func inc_speed(percent):
-	limitSpeed()
 	var rel = float(percent) / 100
-	speedFactor += rel
-	print("Ball logs: ", "increased speed on ", name, " on ", speedFactor, " with ", percent, "%")
+	speedFactor = clamp(speedFactor+rel, 0.5, 2.5 * (get_scale()[0]*0.5))
+	print("Ball logs: ", "increased speed on ", name, " by ", rel, ". New ball Speedfactor is ", speedFactor)
 	
 func inc_size(percent):
-	
-	var scle = get_scale() * (1 + float(percent) / 100)
-	if scle[1] > 6:
-		scle= Vector2(6, 6)
-	set_scale(scle)
-	print("Ball logs: ", "increased scale of ball on ", name, " to ", scale , " with ", percent, "%")
-	size =  get_node("Sprite").get_texture().get_size() * get_scale()
+	var scale = get_scale()
+	var rel = float(percent) / 100
+	scale[0] = clamp(scale[0]+rel, 0.3, 4)
+	scale[1] = scale[0]
+	set_scale(scale)
+	size = get_node("Sprite").get_texture().get_size() * get_scale()
+	print("Ball logs: ", "increased scale of ball on ", name, " by ", rel , ". New ball Scale is ", scale)
 	
 func dec_size(percent):
-	var scle = get_scale() * (1 - float(percent) / 100)
-	if scle[1] < 0.3:
-		scle= Vector2(0.3, 0.3)
-	set_scale(scle)
-	print("Ball logs: ", "increased scale of ball on ", name, " to ", scale , " with ", percent, "%")
-	size =  get_node("Sprite").get_texture().get_size() * get_scale()
+	var scale = get_scale() 
+	var rel = float(percent) / 100
+	scale[0] = clamp(scale[0]-rel, 0.3, 4)
+	scale[1] = scale[0]
+	set_scale(scale)
+	size = get_node("Sprite").get_texture().get_size() * get_scale()
+	print("Ball logs: ", "decreased scale of ball on ", name, " by ", rel , ". New ball Scale is ", scale)
 	
 func reset():
-	preserveSpeed  = Vector2(speed[0], 0)
+	preserveSpeed = Vector2(speed[0], 0)
 	speed = Vector2(0,0)
 	get_node("Timer").start()
 	set_position(Vector2(globalData.getOption("width")/2, globalData.getOption("height")/2))

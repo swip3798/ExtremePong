@@ -7,8 +7,12 @@ signal collision_detected
 var points
 var width
 var height
-var origHeight
 var texture
+
+var origHeight
+var origSpeed
+var origPosX
+var origPosY
 
 var globalData
 
@@ -23,7 +27,11 @@ func _ready():
 	texture = get_node("Sprite").texture
 	width = texture.get_size()[0]
 	height = texture.get_size()[1]
+	
 	origHeight = height
+	origSpeed = speed
+	origPosX = posX
+	origPosY = posY
 
 func move_up(delta):
 	posY -= speed*delta
@@ -40,11 +48,11 @@ func _on_Area2D_area_entered(area):
 	emit_signal("collision_detected")
 
 func inc_speed(inc):
-	speed = clamp(speed+inc, 0.2, 10)
+	speed = clamp(speed+inc, 0.2 * origSpeed, 4 * origSpeed)
 	print("Player logs: ", "increase speed on ", name, " to ", speed, " by ", inc, ". New Player speed is ", speed)
 
 func dec_speed(dec):
-	speed = clamp(speed-dec, 0.2, 10)
+	speed = clamp(speed-dec, 0.2 * origSpeed, 4 * origSpeed)
 	print("Player logs: ", "decreased speed on ", name, " to ", speed, " by ", dec, ". New Player speed is ", speed)
 
 func inc_size(percent):

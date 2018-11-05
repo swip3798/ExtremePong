@@ -23,7 +23,6 @@ func _ready():
 	else:
 		get_node("KeyboardController2").set_player(player2)
 	update_labels()
-	ball.reset()
 	get_node("Ball").activePlayer = player2
 
 func reset():
@@ -32,18 +31,6 @@ func reset():
 	explosion.set_z_index(-1)
 	add_child(explosion)
 	update_labels()
-	ball.reset()
-
-func _on_exit_left(area):
-	ball.set_position(Vector2(0, ball.get_position()[1]))
-	player2.points += 1
-	reset()
-
-
-func _on_exit_right(area):
-	ball.set_position(Vector2(1280, ball.get_position()[1]))
-	player1.points += 1
-	reset()
 
 func update_labels():
 	get_node("PointsPlayer1").text = str(player1.points)

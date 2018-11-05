@@ -6,8 +6,8 @@ var posX
 var posY
 var spriteSize
 var activePlayer
-var preserveSpeed
 var size
+var lastScore
 
 var origSpeed
 var origSize
@@ -18,10 +18,10 @@ signal collide_with_something
 
 func _ready():
 	globalData = get_node("/root/GlobalData")
-	speed = Vector2(-600, -200)
 	speedFactor = 1.0
 	spriteSize = get_node("Sprite").texture.get_size()[0]
 	size = spriteSize * get_scale()[0] * get_node("Sprite").get_scale()[0]
+	reset()
 	print("Initial Ball size: ", size)
 	
 	origSpeed = speed
@@ -34,15 +34,19 @@ func _physics_process(delta):
 func move(delta):
 	var step = (speed*delta*speedFactor)
 	step[0] = clamp(step[0], -35, 35)
-	
 	translate(step)
-	if get_position()[1]-size/2 < 0:
-		set_position(Vector2(get_position()[0], size/2))
+	var pos = get_position()
+	if pos[1]-size/2 < 0:
+		set_position(Vector2(pos[0], size/2))
 		speed[1] = abs(speed[1])
-	elif get_position()[1]+size/2 > globalData.getOption("height"):
-		set_position(Vector2(get_position()[0], globalData.getOption("height") - size/2))
+	elif pos[1]+size/2 > globalData.getOption("height"):
+		set_position(Vector2(pos[0], globalData.getOption("height") - size/2))
 		speed[1] = -abs(speed[1])
 	
+	if pos[0] < 0:
+		score("Player2")
+	elif pos[0] > globalData.getOption("width"):
+		score("Player")
 
 func _on_Area2D_area_entered(area):
 	var object = area.get_parent()
@@ -90,11 +94,18 @@ func dec_size(percent):
 	print("Ball logs: ", "decreased scale of ball on ", name, " by ", rel , ". New ball Scale is ", scale)
 	print("Ball logs: ", "New ball Size is ", size)
 	
+func score(player):
+	get_node("/root/Level/"+player).points += 1
+	get_node("/root/Level").reset()
+	reset()
+	
 func reset():
-	preserveSpeed = Vector2(speed[0], 0)
 	speed = Vector2(0,0)
 	get_node("Timer").start()
 	set_position(Vector2(globalData.getOption("width")/2, globalData.getOption("height")/2))
 
 func _on_Timer_timeout():
-	speed = preserveSpeed
+	if lastScore == "Player":
+		speed = Vector2(600, 0)
+	else:
+		speed = Vector2(-600,0)

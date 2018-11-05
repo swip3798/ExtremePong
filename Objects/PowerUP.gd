@@ -11,7 +11,7 @@ var globalData
 func _ready():
 	globalData = get_node("/root/GlobalData")
 	
-	powerFactor =  globalData.getOption("powerfactor")
+	powerFactor = globalData.getOption("powerfactor")
 	
 	background = get_node("background")
 	symbol = get_node("Symbol")

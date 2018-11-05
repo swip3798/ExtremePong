@@ -62,12 +62,12 @@ func invX():
 
 func dec_speed(percent):
 	var rel = float(percent) / 100
-	speedFactor = clamp(speedFactor-rel, 0.5, 2.5 + (get_scale()[0]*0.5))
+	speedFactor = clamp(speedFactor-rel, 0.5, 2.5)
 	print("Ball logs: ", "decreased speed on ", name, " by ", rel, ". New ball Speedfactor is ", speedFactor)
 	
 func inc_speed(percent):
 	var rel = float(percent) / 100
-	speedFactor = clamp(speedFactor+rel, 0.5, 2.5 * (get_scale()[0]*0.5))
+	speedFactor = clamp(speedFactor+rel, 0.5, 2.5)
 	print("Ball logs: ", "increased speed on ", name, " by ", rel, ". New ball Speedfactor is ", speedFactor)
 	
 func inc_size(percent):

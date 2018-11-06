@@ -6,7 +6,7 @@ func _ready():
 	globalData = get_node("/root/GlobalData")
 	OS.set_use_vsync(globalData.getOption("vsync"))
 	OS.set_window_fullscreen(globalData.getOption("fullscreen"))
-	get_node("PlayButton").set_text("Play")
+	get_node("PlayButton").set_text("Singleplayer")
 	get_node("Settings").set_text("Settings")
 	get_node("Exit").set_text("Exit")
 	get_node("PlayButton").focus_mode = get_node("PlayButton").FOCUS_ALL
@@ -39,3 +39,7 @@ func _on_PlayButton_button_up():
 
 func _on_Credits_button_up():
 	get_tree().change_scene("res://Objects/Credits.tscn")
+
+
+func _on_Multiplayer_button_up():
+	get_tree().change_scene("res://Objects/Multiplayer Menu.tscn")

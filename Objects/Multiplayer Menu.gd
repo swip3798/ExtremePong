@@ -11,3 +11,7 @@ func _on_Host_button_up():
 
 func _on_Join_button_up():
 	pass # replace with function body
+
+
+func _on_Connect_Directly_button_up():
+	pass # replace with function body

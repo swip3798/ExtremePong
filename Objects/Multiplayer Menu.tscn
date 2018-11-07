@@ -57,9 +57,9 @@ __meta__ = {
 [node name="PlayerName" parent="." index="2" instance=ExtResource( 4 )]
 
 modulate = Color( 0.974365, 1, 0.179688, 1 )
-margin_left = 74.0
+margin_left = 27.0
 margin_top = 159.0
-margin_right = 434.0
+margin_right = 387.0
 margin_bottom = 212.0
 placeholder_text = "Your name..."
 placeholder_alpha = 0.5
@@ -68,12 +68,20 @@ _sections_unfolded = [ "Placeholder", "Visibility", "custom_colors", "custom_fon
 [node name="Host" parent="." index="3" instance=ExtResource( 5 )]
 
 modulate = Color( 1, 0.492188, 0, 1 )
-margin_left = 473.0
+margin_left = 398.0
 margin_top = 151.0
-margin_right = 705.0
+margin_right = 630.0
 margin_bottom = 231.0
 
-[node name="lstOpenGames" parent="." index="4" instance=ExtResource( 6 )]
+[node name="Connect Directly" parent="." index="4" instance=ExtResource( 5 )]
+
+modulate = Color( 1, 0.492188, 0, 1 )
+margin_left = 35.0
+margin_top = 627.0
+margin_right = 487.0
+margin_bottom = 707.0
+
+[node name="lstOpenGames" parent="." index="5" instance=ExtResource( 6 )]
 
 modulate = Color( 0, 1, 0.882813, 1 )
 margin_left = 54.0
@@ -82,7 +90,7 @@ margin_right = 1217.0
 margin_bottom = 618.0
 _sections_unfolded = [ "Visibility", "custom_fonts", "custom_styles" ]
 
-[node name="lblOpenGames" type="Label" parent="." index="5"]
+[node name="lblOpenGames" type="Label" parent="." index="6"]
 
 modulate = Color( 0, 1, 0.882353, 1 )
 anchor_left = 0.0
@@ -106,7 +114,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Visibility", "custom_fonts" ]
 
-[node name="Join" parent="." index="6" instance=ExtResource( 5 )]
+[node name="Join" parent="." index="7" instance=ExtResource( 5 )]
 
 modulate = Color( 0, 1, 0.0390625, 1 )
 margin_left = 999.0
@@ -116,6 +124,8 @@ margin_bottom = 706.0
 disabled = true
 
 [connection signal="button_up" from="Host" to="." method="_on_Host_button_up"]
+
+[connection signal="button_up" from="Connect Directly" to="." method="_on_Connect_Directly_button_up"]
 
 [connection signal="button_up" from="Join" to="." method="_on_Join_button_up"]
 

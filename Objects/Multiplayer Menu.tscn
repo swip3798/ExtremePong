@@ -27,6 +27,7 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="." index="0"]
 
+modulate = Color( 1, 0, 0.539063, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -46,7 +47,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -55,13 +56,14 @@ __meta__ = {
 
 [node name="PlayerName" parent="." index="2" instance=ExtResource( 4 )]
 
+modulate = Color( 0.974365, 1, 0.179688, 1 )
 margin_left = 74.0
 margin_top = 159.0
 margin_right = 434.0
 margin_bottom = 212.0
 placeholder_text = "Your name..."
 placeholder_alpha = 0.5
-_sections_unfolded = [ "Placeholder", "custom_colors", "custom_fonts", "custom_styles" ]
+_sections_unfolded = [ "Placeholder", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
 
 [node name="Host" parent="." index="3" instance=ExtResource( 5 )]
 
@@ -71,15 +73,18 @@ margin_top = 151.0
 margin_right = 705.0
 margin_bottom = 231.0
 
-[node name="Retro List" parent="." index="4" instance=ExtResource( 6 )]
+[node name="lstOpenGames" parent="." index="4" instance=ExtResource( 6 )]
 
+modulate = Color( 0, 1, 0.882813, 1 )
 margin_left = 54.0
 margin_top = 291.0
 margin_right = 1217.0
 margin_bottom = 618.0
+_sections_unfolded = [ "Visibility", "custom_fonts", "custom_styles" ]
 
-[node name="Label2" type="Label" parent="." index="5"]
+[node name="lblOpenGames" type="Label" parent="." index="5"]
 
+modulate = Color( 0, 1, 0.882353, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -99,7 +104,7 @@ text = "Open Games:"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
 
 [node name="Join" parent="." index="6" instance=ExtResource( 5 )]
 

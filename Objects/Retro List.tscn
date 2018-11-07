@@ -1,6 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://res/Text Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://res/Retro List_Selected.tres" type="StyleBox" id=1]
+[ext_resource path="res://res/Retro List_BG.tres" type="StyleBox" id=2]
+[ext_resource path="res://res/Text Font.tres" type="DynamicFont" id=3]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -19,65 +21,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="StyleBoxFlat" id=3]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0, 0, 0, 1 )
-draw_center = true
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-border_blend = false
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Border", "Border Width" ]
-
-[sub_resource type="StyleBoxFlat" id=2]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0, 0, 0, 1 )
-draw_center = true
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 1, 1, 1, 1 )
-border_blend = false
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Border", "Border Width" ]
-
-[node name="Retro List" type="ItemList"]
+[node name="Retro List" type="ItemList" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -93,9 +37,9 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_styles/cursor = SubResource( 1 )
-custom_styles/selected = SubResource( 3 )
-custom_styles/bg = SubResource( 2 )
-custom_fonts/font = ExtResource( 1 )
+custom_styles/selected = ExtResource( 1 )
+custom_styles/bg = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 items = [  ]
 select_mode = 0
 allow_reselect = false

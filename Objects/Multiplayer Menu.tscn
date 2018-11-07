@@ -110,4 +110,8 @@ margin_right = 1230.0
 margin_bottom = 706.0
 disabled = true
 
+[connection signal="button_up" from="Host" to="." method="_on_Host_button_up"]
+
+[connection signal="button_up" from="Join" to="." method="_on_Join_button_up"]
+
 

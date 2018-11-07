@@ -6,7 +6,7 @@
 [ext_resource path="res://Objects/RetroButton.gd" type="Script" id=4]
 [ext_resource path="res://res/Button Font.tres" type="DynamicFont" id=5]
 
-[node name="RetroButton" type="TextureButton"]
+[node name="RetroButton" type="TextureButton" index="0"]
 
 modulate = Color( 0, 1, 0.811765, 1 )
 anchor_left = 0.0

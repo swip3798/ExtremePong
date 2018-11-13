@@ -84,3 +84,10 @@ func validatePosition():
 
 func on_collision():
 	print("Player logs: ", "Collision detected")
+	
+func reset():
+	set_scale(Vector2(1,1))
+	height = origHeight
+	speed = origSpeed
+	
+	

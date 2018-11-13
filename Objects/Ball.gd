@@ -10,7 +10,7 @@ var size
 var lastScore
 
 var origSpeed
-var origSize
+var origScale
 
 var globalData
 
@@ -21,11 +21,13 @@ func _ready():
 	speedFactor = 1.0
 	spriteSize = get_node("Sprite").texture.get_size()[0]
 	size = spriteSize * get_scale()[0] * get_node("Sprite").get_scale()[0]
-	reset()
-	print("Initial Ball size: ", size)
-	
+	speed = Vector2(0,0)
 	origSpeed = speed
-	origSize = size
+	origScale = get_scale()
+	set_position(Vector2(globalData.getOption("width")/2, globalData.getOption("height")/2))
+	
+	get_node("Timer").start()
+	print("Initial Ball size: ", size)
 	
 	
 func _physics_process(delta):
@@ -100,9 +102,12 @@ func score(player):
 	reset()
 	
 func reset():
+	get_node("/root/Level/Player").reset()
+	get_node("/root/Level/Player2").reset()
 	speed = Vector2(0,0)
-	get_node("Timer").start()
+	set_scale(origScale)
 	set_position(Vector2(globalData.getOption("width")/2, globalData.getOption("height")/2))
+	get_node("Timer").start()
 
 func _on_Timer_timeout():
 	if lastScore == "Player":

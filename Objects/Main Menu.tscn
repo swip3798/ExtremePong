@@ -48,7 +48,7 @@ func _process(delta):
 				add_color_override(\"font_color\", Color(\"00ebbe\"))
 			state += 1"
 
-[node name="Main Menu" type="Control" index="0"]
+[node name="Main Menu" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0

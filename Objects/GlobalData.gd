@@ -7,7 +7,7 @@ var opts = {
 	"height": 720,
 	"ai_enabled": true,
 	"ai_difficulty": 1,
-	"powerfactor": 5.0,
+	"powerfactor": 1.0,
 	"fullscreen": false,
 	"vsync": false,
 	"glow": true

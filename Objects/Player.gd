@@ -9,6 +9,11 @@ var width
 var height
 var texture
 
+var origHeight
+var origSpeed
+var origPosX
+var origPosY
+
 var globalData
 
 func _ready():
@@ -22,23 +27,20 @@ func _ready():
 	texture = get_node("Sprite").texture
 	width = texture.get_size()[0]
 	height = texture.get_size()[1]
+	
+	origHeight = height
+	origSpeed = speed
+	origPosX = posX
+	origPosY = posY
 
 func move_up(delta):
 	posY -= speed*delta
-	if (posY - (height/2)) < 0:
-		if height < globalData.getOption("height"):
-			posY = height/2
-		else:
-			posY = globalData.getOption("height") / 2
+	validatePosition()
 	set_position(Vector2(posX,posY))
 	
 func move_down(delta):
 	posY += speed*delta
-	if (posY+(height/2)) > globalData.getOption("height"):
-		if height < globalData.getOption("height"):
-			posY = globalData.getOption("height")-(height/2)
-		else:
-			posY = globalData.getOption("height") / 2
+	validatePosition()
 	set_position(Vector2(posX,posY))
 
 
@@ -46,32 +48,46 @@ func _on_Area2D_area_entered(area):
 	emit_signal("collision_detected")
 
 func inc_speed(inc):
-	speed += inc
-	print("Player logs: ", "increase speed on ", name, " to ", speed, " with ", inc)
+	speed = clamp(speed+inc, 0.2 * origSpeed, 4 * origSpeed)
+	print("Player logs: ", "increase speed on ", name, " to ", speed, " by ", inc, ". New Player speed is ", speed)
 
 func dec_speed(dec):
-	speed -= dec
-	print("Player logs: ", "decreased speed on ", name, " to ", speed, " with ", dec)
+	speed = clamp(speed-dec, 0.2 * origSpeed, 4 * origSpeed)
+	print("Player logs: ", "decreased speed on ", name, " to ", speed, " by ", dec, ". New Player speed is ", speed)
 
 func inc_size(percent):
 	percent = float(percent)
 	percent /= 100
 	scale = get_scale()
-	scale[1] += percent
+	scale[1] = clamp(scale[1]+percent, 0.2, globalData.getOption("height")/origHeight)
 	set_scale(scale)
-	height = height * get_scale()[1]
-	print("Player logs: ", "increase size on ", name, " to ", height, " with ", percent)
+	height = origHeight * get_scale()[1]
+	print("Player logs: ", "increase size on ", name, " to ", height, " by ", percent, ". New Player scale is ", scale[1])
 	
 func dec_size(percent):
 	percent = float(percent)
 	percent /= 100
 	scale = get_scale()
-	scale[1] -= percent
-	if scale[1] < 0.2:
-		scale[1] = 0.2
+	scale[1] = clamp(scale[1]-percent, 0.2, globalData.getOption("height")/origHeight)
 	set_scale(scale)
-	height = height * get_scale()[1]
-	print("Player logs: ", "decreased size on ", name, " to ", height, " with ", percent)
+	height = origHeight * get_scale()[1]
+	print("Player logs: ", "decreased size on ", name, " to ", height, " by ", percent, ". New Player scale is ", scale[1])
 	
+func validatePosition():
+	var sh = globalData.getOption("height")
+	if height >= sh:
+		posY = sh/2
+	elif posY + (height/2) > sh:
+		posY = sh-(height/2)
+	elif posY - (height/2) < 0:
+		posY = height/2
+
 func on_collision():
 	print("Player logs: ", "Collision detected")
+	
+func reset():
+	set_scale(Vector2(1,1))
+	height = origHeight
+	speed = origSpeed
+	
+	

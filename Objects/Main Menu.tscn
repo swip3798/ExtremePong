@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Objects/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://res/Splash Font.tres" type="DynamicFont" id=2]
@@ -6,8 +6,136 @@
 [ext_resource path="res://Objects/RetroButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Buttonhover.png" type="Texture" id=5]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="VisualShaderNodeScalarUniform" id=8]
+uniform_name = "ColorRotationSpeed"
 
+[sub_resource type="VisualShaderNodeVectorFunc" id=2]
+function = 5
+
+[sub_resource type="VisualShaderNodeVectorCompose" id=3]
+default_input_values = [ 0, 0.0, 1, 1.0, 2, 1.0 ]
+
+[sub_resource type="VisualShaderNodeInput" id=4]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeTexture" id=5]
+source = 2
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=9]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=10]
+
+[sub_resource type="VisualShaderNodeInput" id=11]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeScalarOp" id=12]
+default_input_values = [ 0, 0.0, 1, 0.2 ]
+operator = 2
+
+[sub_resource type="VisualShader" id=6]
+code = "shader_type canvas_item;
+uniform float ColorRotationSpeed;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:8
+	float n_out8p0;
+	n_out8p0 = TIME;
+
+// ScalarUniform:10
+	float n_out10p0;
+	n_out10p0 = ColorRotationSpeed;
+
+// ScalarOp:9
+	float n_out9p0;
+	n_out9p0 = n_out8p0 * n_out10p0;
+
+// Input:4
+	vec3 n_out4p0;
+	n_out4p0 = vec3(UV,0.0);
+
+// VectorDecompose:6
+	float n_out6p0;
+	float n_out6p1;
+	float n_out6p2;
+	n_out6p0 = n_out4p0.x;
+	n_out6p1 = n_out4p0.y;
+	n_out6p2 = n_out4p0.z;
+
+// ScalarOp:7
+	float n_out7p0;
+	n_out7p0 = n_out9p0 + n_out6p0;
+
+// VectorCompose:3
+	float n_in3p1 = 1.00000;
+	float n_in3p2 = 1.00000;
+	vec3 n_out3p0;
+	n_out3p0 = vec3( n_out7p0 , n_in3p1 , n_in3p2 );
+
+// VectorFunc:2
+	vec3 n_out2p0;
+	{
+		vec3 c = n_out3p0;
+		vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+		vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+		n_out2p0=c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+	}
+
+// Texture:5
+	vec3 n_out5p0;
+	float n_out5p1;
+	{
+		vec4 _tex_read = texture( TEXTURE , n_out4p0.xy );
+		n_out5p0 = _tex_read.rgb;
+		n_out5p1 = _tex_read.a;
+	}
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+	COLOR.a = n_out5p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -555, -52 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 760, 80 )
+nodes/fragment/2/node = SubResource( 2 )
+nodes/fragment/2/position = Vector2( 460, 100 )
+nodes/fragment/3/node = SubResource( 3 )
+nodes/fragment/3/position = Vector2( 240, 80 )
+nodes/fragment/4/node = SubResource( 4 )
+nodes/fragment/4/position = Vector2( -420, 240 )
+nodes/fragment/5/node = SubResource( 5 )
+nodes/fragment/5/position = Vector2( 120, 200 )
+nodes/fragment/6/node = SubResource( 9 )
+nodes/fragment/6/position = Vector2( -200, 100 )
+nodes/fragment/7/node = SubResource( 10 )
+nodes/fragment/7/position = Vector2( 60, 0 )
+nodes/fragment/8/node = SubResource( 11 )
+nodes/fragment/8/position = Vector2( -400, -80 )
+nodes/fragment/9/node = SubResource( 12 )
+nodes/fragment/9/position = Vector2( -180, -60 )
+nodes/fragment/10/node = SubResource( 8 )
+nodes/fragment/10/position = Vector2( -560, 0 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0, 3, 0, 2, 0, 4, 0, 5, 0, 5, 1, 0, 1, 4, 0, 6, 0, 7, 0, 3, 0, 6, 0, 7, 1, 8, 0, 9, 0, 9, 0, 7, 0, 10, 0, 9, 1 )
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/ColorRotationSpeed = 0.05
+
+[sub_resource type="GDScript" id=1]
 script/source = "extends Label
 
 var time
@@ -49,61 +177,36 @@ func _process(delta):
 			state += 1"
 
 [node name="Main Menu" type="Control"]
-
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 focus_neighbour_left = NodePath("PlayButton")
 focus_neighbour_top = NodePath("PlayButton")
 focus_neighbour_right = NodePath("PlayButton")
 focus_neighbour_bottom = NodePath("PlayButton")
 focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Focus" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Title" type="Label" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="Title" type="Label" parent="."]
+material = SubResource( 7 )
 anchor_right = 1.0
-anchor_bottom = 0.0
 margin_top = 20.0
 margin_bottom = 139.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 1, 0.811765, 1 )
 text = "Extreme Pong"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 script = SubResource( 1 )
-_sections_unfolded = [ "Anchor", "Rect", "custom_colors" ]
 
-[node name="Position2D" type="Position2D" parent="Title" index="0"]
-
+[node name="Position2D" type="Position2D" parent="Title"]
 position = Vector2( 1031.43, 116.589 )
 
-[node name="WorldEnvironment" parent="." index="1" instance=ExtResource( 3 )]
+[node name="WorldEnvironment" parent="." instance=ExtResource( 3 )]
 
-[node name="PlayButton" parent="." index="2" instance=ExtResource( 4 )]
-
+[node name="PlayButton" parent="." instance=ExtResource( 4 )]
 modulate = Color( 0.781494, 0.300781, 1, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -118,10 +221,8 @@ focus_neighbour_bottom = NodePath("../Settings")
 focus_next = NodePath("../Settings")
 focus_previous = NodePath("../Exit")
 texture_focused = ExtResource( 5 )
-_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 
-[node name="Settings" parent="." index="3" instance=ExtResource( 4 )]
-
+[node name="Settings" parent="." instance=ExtResource( 4 )]
 modulate = Color( 1, 0.960938, 0, 1 )
 margin_left = 499.0
 margin_top = 334.0
@@ -131,10 +232,8 @@ focus_neighbour_top = NodePath("../PlayButton")
 focus_neighbour_bottom = NodePath("../Credits")
 focus_next = NodePath("../Credits")
 focus_previous = NodePath("../PlayButton")
-_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
-[node name="Exit" parent="." index="4" instance=ExtResource( 4 )]
-
+[node name="Exit" parent="." instance=ExtResource( 4 )]
 modulate = Color( 1, 0.1875, 0, 1 )
 margin_left = 499.0
 margin_top = 564.0
@@ -144,10 +243,8 @@ focus_neighbour_top = NodePath("../Credits")
 focus_neighbour_bottom = NodePath("../PlayButton")
 focus_next = NodePath("../PlayButton")
 focus_previous = NodePath("../Credits")
-_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
 
-[node name="Credits" parent="." index="5" instance=ExtResource( 4 )]
-
+[node name="Credits" parent="." instance=ExtResource( 4 )]
 modulate = Color( 0.162842, 1, 0.15625, 1 )
 margin_left = 499.0
 margin_top = 449.0
@@ -157,16 +254,8 @@ focus_neighbour_top = NodePath("../Settings")
 focus_neighbour_bottom = NodePath("../Exit")
 focus_next = NodePath("../Exit")
 focus_previous = NodePath("../Settings")
-_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
-
 [connection signal="gui_input" from="Title" to="." method="_on_Title_gui_input"]
-
 [connection signal="button_up" from="PlayButton" to="." method="_on_PlayButton_button_up"]
-
 [connection signal="button_up" from="Settings" to="." method="_on_Settings_button_up"]
-
 [connection signal="button_up" from="Exit" to="." method="_on_Exit_button_up"]
-
 [connection signal="button_up" from="Credits" to="." method="_on_Credits_button_up"]
-
-
